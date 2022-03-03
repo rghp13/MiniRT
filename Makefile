@@ -33,7 +33,7 @@ SRC						=		$(addprefix $(PATH_SRC)/,$(SRC_NAME))
 OBJ						=		$(addprefix $(PATH_SRC)/,$(OBJ_NAME))
 LIBFT_A					=		libft.a
 LIBX_FD					=		./minilibx-linux
-LDLIBS					=		-lft -lmlx -lm -lXext -lX11
+LDLIBS					=		-lm -lXext -lX11
 .c.o:
 								@${CC} ${CFLAG} -I${PATH_HEAD} -c $< -o ${<:.c=.o}
 								@printf "${GREEN}[ OK ] ${<:.s=.o}${NC}                \r"
@@ -41,7 +41,7 @@ ${NAME}:						${OBJ}
 								@printf "${GREEN}[DONE]\n"
 								@make --no-print-directory -C ${PATH_LIB}
 								@make --no-print-directory -C ${LIBX_FD}
-								@${CC} $^ -o $@ ${CFLAG} ${PATH_LIB}/${LIBFT_A} ${LIBX_FD}/libmlx.a
+								@${CC} $^ -o $@ ${CFLAG} ${PATH_LIB}/${LIBFT_A} ${LIBX_FD}/libmlx.a ${LDLIBS}
 								@printf "${CYAN}[COMPILATION COMPLETE]${NC}\n"
 								@printf "${PURPLE}$$HEADER${NC}\n"
 all:							${NAME}
