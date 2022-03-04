@@ -11,16 +11,13 @@ int	init_mlx_win_img(t_mlx_base *mlxref)
 	return (0);
 }
 
-t_minirt	init_scene_struct()
+t_minirt	init_scene_struct(void)
 {
-	t_minirt scene;
+	t_minirt	scene;
 
 	init_mlx_win_img (&scene.mlxref);
-	scene.ambient.color = 0;
-	scene.ambient.ratio = 0;
-	scene.camera.fov = 0;
-	reset_position(&scene.camera.pos);
-	reset_rotation(&scene.camera.rot);
+	scene.ambient = NULL;
+	scene.camera = NULL;
 	scene.light = NULL;
 	scene.sphere = NULL;
 	scene.plane = NULL;
@@ -29,11 +26,42 @@ t_minirt	init_scene_struct()
 	return (scene);
 }
 
-int	main(void)
+int	temp_parse(t_minirt *scene)
+{
+	scene->ambient = ft_calloc(1, sizeof(t_alight));
+	scene->camera = ft_calloc(1, sizeof(t_camera));
+	scene->light = ft_calloc(1, sizeof(t_light));
+	scene->sphere = ft_calloc(1, sizeof(t_sphere));
+	scene->plane = ft_calloc(1, sizeof(t_plane));
+	scene->cylinder = ft_calloc(1, sizeof(t_cylinder));
+	if (scene->ambient == NULL || scene->camera == NULL || scene->light == NULL || scene->sphere == NULL || scene->plane == NULL || scene->cylinder == NULL)
+		return (1);
+	scene->ambient->color = WHITE;
+	scene->ambient->ratio = 0.5;
+	scene->camera->fov = 90.0;
+	scene->camera->pos.y = 20.0;
+	scene->light->color = WHITE;
+	scene->light->lum = 0.5;
+	scene->sphere->pos.x = 5.0;
+	scene->sphere->color = 0x00FF0000;
+	scene->sphere->diameter = 5.0;
+	scene->plane->color = 0x0000FF00;
+	scene->plane->pos.y = 10.0;
+	scene->cylinder->color = 0x000000FF;
+	scene->cylinder->diameter = 3.0;
+	scene->cylinder->height = 4.0;
+	scene->cylinder->pos.z = 10.0;
+}
+
+int	main(int argc, char **argv)
 {
 	t_minirt	scene;
 
+	if (argc != 2)
+		return (1);
 	scene = init_scene_struct(); //initialization
+	if (temp_parse(&scene))
+		return (1);
 	//parsing and filling of struct
 	//calculations and filling of image with pixel data
 	my_mlx_pixel_put(&scene.mlxref.imgref, 400, 300, 0x00FF0000); //this will dissapear

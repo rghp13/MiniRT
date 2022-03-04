@@ -14,6 +14,12 @@
 # define XSIZE 1280
 # define YSIZE 720
 # define KEY_ESCAPE 65307
+# define WHITE 0x00FFFFFF
+# define ER1 "ERROR : MALLOC FAILURE "
+# define ER2 "ERROR : INVALID FILETYPE "
+# define ER3 "ERROR : FILE OPEN FAILURE "
+# define ER4 "ERROR : PARSING ERROR DETECTED "
+# define ER5 "ERROR : MISSING KEY COMPONENT "
 
 typedef struct s_img {
 	void	*img;
@@ -35,19 +41,11 @@ typedef struct s_pixel {
 	int		color;
 }			t_pixel;
 
-typedef struct s_position
-{
+typedef struct t_vector3d {
 	double	x;
 	double	y;
 	double	z;
-}				t_position;
-
-typedef struct s_rotation
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_rotation;
+}				t_vector3d;
 
 typedef struct s_alight
 {
@@ -57,14 +55,14 @@ typedef struct s_alight
 
 typedef struct s_camera
 {
-	t_position		pos;
-	t_rotation		rot;
+	t_vector3d		pos;
+	t_vector3d		rot;
 	double			fov;
 }					t_camera;
 
 typedef struct s_light
 {
-	t_position		pos;
+	t_vector3d		pos;
 	double			lum;
 	u_int32_t		color;
 	struct s_light	*next;
@@ -72,7 +70,7 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	t_position		pos;
+	t_vector3d		pos;
 	double			diameter;
 	u_int32_t		color;
 	struct s_sphere	*next;
@@ -80,16 +78,16 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_position		pos;
-	t_rotation		rot;
+	t_vector3d		pos;
+	t_vector3d		rot;
 	u_int32_t		color;
 	struct s_plane	*next;
 }					t_plane;
 
 typedef struct s_cylinder
 {
-	t_position			pos;
-	t_rotation			rot;
+	t_vector3d			pos;
+	t_vector3d			rot;
 	double				diameter;
 	double				height;
 	u_int32_t			color;
@@ -98,8 +96,8 @@ typedef struct s_cylinder
 
 typedef struct s_cone
 {
-	t_position		pos;
-	t_rotation		rot;
+	t_vector3d		pos;
+	t_vector3d		rot;
 	double			angle;
 	struct s_cone	*next;
 }					t_cone;
@@ -107,8 +105,8 @@ typedef struct s_cone
 typedef struct s_minirt
 {
 	t_mlx_base	mlxref;
-	t_alight	ambient;
-	t_camera	camera;
+	t_alight	*ambient;
+	t_camera	*camera;
 	t_light		*light;
 	t_sphere	*sphere;
 	t_plane		*plane;
@@ -125,12 +123,12 @@ void	mlx_draw_pixel(t_img *img, t_pixel pixel);
 /*
 Position Functions (functions that run on a position struct)
 */
-int		reset_position(t_position *pos);
+int		reset_position(t_vector3d *pos);
 
 /*
 Rotation Functions (functions that run on a rotation struct)
 */
-int		reset_rotation(t_rotation *rot);
+int		reset_rotation(t_vector3d *rot);
 
 /*
 Keyboard Functions (functions that relate to keys being pressed)
