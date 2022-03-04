@@ -36,21 +36,22 @@ int	temp_parse(t_minirt *scene)
 	scene->cylinder = ft_calloc(1, sizeof(t_cylinder));
 	if (scene->ambient == NULL || scene->camera == NULL || scene->light == NULL || scene->sphere == NULL || scene->plane == NULL || scene->cylinder == NULL)
 		return (1);
-	scene->ambient->color = WHITE;
+	scene->ambient->color = make_color(255, 255, 255);
 	scene->ambient->ratio = 0.5;
 	scene->camera->fov = 90.0;
 	scene->camera->pos.y = 20.0;
-	scene->light->color = WHITE;
+	scene->light->color = make_color(255, 255, 255);
 	scene->light->lum = 0.5;
 	scene->sphere->pos.x = 5.0;
-	scene->sphere->color = 0x00FF0000;
+	scene->sphere->color = make_color(255, 0, 0);
 	scene->sphere->diameter = 5.0;
-	scene->plane->color = 0x0000FF00;
+	scene->plane->color = make_color(0, 255, 0);
 	scene->plane->pos.y = 10.0;
-	scene->cylinder->color = 0x000000FF;
+	scene->cylinder->color = make_color(0, 0, 255);
 	scene->cylinder->diameter = 3.0;
 	scene->cylinder->height = 4.0;
 	scene->cylinder->pos.z = 10.0;
+	return (0);
 }
 
 int	main(int argc, char **argv)
