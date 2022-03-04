@@ -1,2 +1,2 @@
-#include "minirt.h"
+#include "../includes/minirt.h"
 

@@ -22,7 +22,13 @@ CYAN = \033[36m
 PATH_SRC				=		./srcs
 PATH_HEAD				=		./includes
 PATH_LIB				=		./libft
-SRC_NAME				=		main.c
+SRC_NAME				=		main.c \
+								parse.c \
+								draw_functions.c \
+								position_functions.c \
+								rotation_functions.c \
+								keyboard.c \
+								free.c
 
 NAME					=		minirt
 OBJ_NAME				=		$(SRC_NAME:.c=.o)
