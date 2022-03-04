@@ -27,7 +27,10 @@ SRC_NAME				=		main.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
+								color_functions.c \
 								keyboard.c \
+								simple_vector_math.c \
+								advanced_vector_math.c \
 								free.c
 
 NAME					=		minirt

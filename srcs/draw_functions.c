@@ -16,6 +16,6 @@ void	mlx_draw_pixel(t_img *img, t_pixel pixel)
 	{
 		dst = img->addr + ((int)pixel.y * img->line_length + \
 		(int)pixel.x * (img->bits_per_pixel / 8));
-		*(unsigned int *)dst = pixel.color;
+		*(unsigned int *)dst = int_color(pixel.color);
 	}
 }

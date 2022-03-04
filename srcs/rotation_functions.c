@@ -1,6 +1,6 @@
 #include "../includes/minirt.h"
 
-int	reset_rotation(t_rotation *rot)
+int	reset_rotation(t_vector3d *rot)
 {
 	rot->x = 0;
 	rot->y = 0;
