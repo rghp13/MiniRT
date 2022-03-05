@@ -32,3 +32,24 @@ t_color	make_color(int r, int g, int b)
 	ret_col = clamp_color(ret_col);
 	return (ret_col);
 }
+
+t_vector3d	color_to_vector(t_color color)
+{
+	t_vector3d	ret_vec;
+
+	ret_vec.x = color.r;
+	ret_vec.y = color.g;
+	ret_vec.z = color.b;
+	return (ret_vec);
+}
+
+t_color vector_to_color(t_vector3d vector)
+{
+	t_color	color;
+
+	color.r = vector.x;
+	color.g = vector.y;
+	color.b = vector.z;
+	color = clamp_color(color);
+	return (color);
+}

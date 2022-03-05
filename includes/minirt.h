@@ -128,7 +128,6 @@ typedef struct s_minirt
 /*
 Draw Functions (functions that change parts of the image)
 */
-void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void		mlx_draw_pixel(t_img *img, t_pixel pixel);
 
 /*
@@ -172,5 +171,18 @@ Color Math (functions that allow for the manipulation of colors)
 t_color 	clamp_color(t_color color);
 t_color		make_color(int r, int g, int b);
 int			int_color(t_color color);
+t_vector3d	color_to_vector(t_color color);
+t_color		vector_to_color(t_vector3d vector);
+
+/*
+Tracing Functions (functions that deal with the raytracing logic)
+*/
+int			basic_tracer(t_minirt *scene);
+
+/*
+Sphere Functions (functions that handle math related to spheres)
+*/
+int			sphere_intersect(t_sphere *sphere, t_ray ray, double *t);
+t_vector3d	get_normal(t_sphere *sphere, t_vector3d vec);
 
 #endif

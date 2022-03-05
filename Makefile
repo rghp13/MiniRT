@@ -24,6 +24,7 @@ PATH_HEAD				=		./includes
 PATH_LIB				=		./libft
 SRC_NAME				=		main.c \
 								parse.c \
+								tracing.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
@@ -31,6 +32,7 @@ SRC_NAME				=		main.c \
 								keyboard.c \
 								simple_vector_math.c \
 								advanced_vector_math.c \
+								sphere_functions.c \
 								free.c
 
 NAME					=		minirt
