@@ -36,18 +36,19 @@ int	temp_parse(t_minirt *scene)
 	scene->cylinder = ft_calloc(1, sizeof(t_cylinder));
 	if (scene->ambient == NULL || scene->camera == NULL || scene->light == NULL || scene->sphere == NULL || scene->plane == NULL || scene->cylinder == NULL)
 		return (1);
-	scene->ambient->color = WHITE;
+	scene->ambient->color = make_color(255, 255, 255);
 	scene->ambient->ratio = 0.5;
 	scene->camera->fov = 90.0;
-	scene->camera->pos.y = 20.0;
-	scene->light->color = WHITE;
-	scene->light->lum = 0.5;
-	scene->sphere->pos.x = 5.0;
-	scene->sphere->color = 0x00FF0000;
-	scene->sphere->diameter = 5.0;
-	scene->plane->color = 0x0000FF00;
+	scene->camera->pos = make_vector(0, 0, 0);
+	scene->light->color = make_color(0, 0, 255);
+	scene->light->lum = 1;
+	scene->light->pos = make_vector(0, 0, 600);
+	scene->sphere->pos = make_vector(XSIZE * 0.5, YSIZE * 0.5, 20);
+	scene->sphere->color = make_color(0, 255, 0);
+	scene->sphere->diameter = 150;
+	scene->plane->color = make_color(0, 255, 0);
 	scene->plane->pos.y = 10.0;
-	scene->cylinder->color = 0x000000FF;
+	scene->cylinder->color = make_color(0, 0, 255);
 	scene->cylinder->diameter = 3.0;
 	scene->cylinder->height = 4.0;
 	scene->cylinder->pos.z = 10.0;
@@ -64,8 +65,7 @@ int	main(int argc, char **argv)
 	if (temp_parse(&scene))
 		return (1);
 	//parsing and filling of struct
-	//calculations and filling of image with pixel data
-	my_mlx_pixel_put(&scene.mlxref.imgref, 400, 300, 0x00FF0000); //this will dissapear
+	basic_tracer(&scene);//calculations and filling of image with pixel data
 	mlx_put_image_to_window(scene.mlxref.mlx, scene.mlxref.win, scene.mlxref.imgref.img, 0, 0);//display image
 	mlx_key_hook(scene.mlxref.win, key_hook, &scene);//assign key to exit
 	mlx_loop(scene.mlxref.mlx);//loop

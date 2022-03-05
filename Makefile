@@ -36,10 +36,15 @@ SRC_NAME				=		main.c \
 								parse_light.c \
 								parse_plane.c \
 								parse_sphere.c \
+								tracing.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
+								color_functions.c \
 								keyboard.c \
+								simple_vector_math.c \
+								advanced_vector_math.c \
+								sphere_functions.c \
 								free.c
 
 NAME					=		minirt
