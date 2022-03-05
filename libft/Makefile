@@ -6,7 +6,7 @@
 #    By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/17 10:46:39 by dscriabi          #+#    #+#              #
-#    Updated: 2022/02/18 22:07:39 by rponsonn         ###   ########.fr        #
+#    Updated: 2022/03/05 20:44:17 by rponsonn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ ft_print_hexa.c ft_print_int.c ft_print_percent.c ft_print_pointer.c ft_print_st
 ft_print_string.c ft_print_uint.c ft_print_width.c ft_printf.c ft_ptoa.c ft_utoa.c\
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_get_next_line_utils.c\
-ft_get_next_line.c ft_isoutofintrange.c ft_stringcomp.c ft_strisnum.c
+ft_get_next_line.c ft_isoutofintrange.c ft_stringcomp.c ft_strisnum.c \
+ft_free_all_split.c ft_atof.c
 
 OBJS	= ${SRCS:.c=.o}
 CC		= gcc

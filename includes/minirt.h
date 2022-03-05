@@ -20,6 +20,7 @@
 # define ER3 "ERROR : FILE OPEN FAILURE "
 # define ER4 "ERROR : PARSING ERROR DETECTED "
 # define ER5 "ERROR : MISSING KEY COMPONENT "
+# define ER6 "ERROR : ILLEGAL CHARS DETECTED "
 
 typedef struct s_img {
 	void	*img;
@@ -93,7 +94,7 @@ typedef struct s_cylinder
 	u_int32_t			color;
 	struct s_cylinder	*next;
 }					t_cylinder;
-
+//keyword co
 typedef struct s_cone
 {
 	t_vector3d		pos;
@@ -112,32 +113,56 @@ typedef struct s_minirt
 	t_plane		*plane;
 	t_cylinder	*cylinder;
 	t_cone		*cone;
+	int			parsing_error;
 }				t_minirt;
 
 /*
-Draw Functions (functions that change parts of the image)
+**Draw Functions (functions that change parts of the image)
 */
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	mlx_draw_pixel(t_img *img, t_pixel pixel);
 
 /*
-Position Functions (functions that run on a position struct)
+**Position Functions (functions that run on a position struct)
 */
 int		reset_position(t_vector3d *pos);
 
 /*
-Rotation Functions (functions that run on a rotation struct)
+**Rotation Functions (functions that run on a rotation struct)
 */
 int		reset_rotation(t_vector3d *rot);
 
 /*
-Keyboard Functions (functions that relate to keys being pressed)
+**Keyboard Functions (functions that relate to keys being pressed)
 */
 int		key_hook(int key, t_minirt *scene);
 
 /*
-Free Functions (functions that are related to freeing malloced memory)
+**Free Functions (functions that are related to freeing malloced memory)
 */
 void	exit_cleanly(t_minirt *scene, int status);
+/*
+**Parse.c
+*/
+int		parse(char **argv, t_minirt *scene);
+int		prepare_file(char **argv, int *fd, t_minirt *scene);
+/*
+**parse_utils.c
+*/
+int		print_error(const char *str, int ret);
+int		check_valid_file(const char *filename);
+int		empty_line(const char *str);
+int		check_valid_content(const char *str);
+int		approved_char(const char str);
+/*
+**parse_ambient.c
+*/
+int		ambient_parse(char **split, t_minirt *scene);
+int		camera_parse(char **split, t_minirt *scene);
+int		cone_parse(char **split, t_minirt *scene);
+int		cylinder_parse(char **split, t_minirt *scene);
+int		light_parse(char **split, t_minirt *scene);
+int		plane_parse(char **split, t_minirt *scene);
+int		sphere_parse(char **split, t_minirt *scene);
 
 #endif

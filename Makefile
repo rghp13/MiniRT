@@ -24,6 +24,18 @@ PATH_HEAD				=		./includes
 PATH_LIB				=		./libft
 SRC_NAME				=		main.c \
 								parse.c \
+								parse_utils.c \
+								parse_utils2.c \
+								parse_ambient.c \
+								parse_camera.c \
+								parse_cone.c \
+								parse_cylinder.c \
+								parse_light.c \
+								parse_plane.c \
+								parse_sphere.c \
+								parse_light.c \
+								parse_plane.c \
+								parse_sphere.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \

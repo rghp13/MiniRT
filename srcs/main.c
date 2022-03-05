@@ -51,6 +51,7 @@ int	temp_parse(t_minirt *scene)
 	scene->cylinder->diameter = 3.0;
 	scene->cylinder->height = 4.0;
 	scene->cylinder->pos.z = 10.0;
+	return (0);
 }
 
 int	main(int argc, char **argv)
