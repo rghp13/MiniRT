@@ -38,12 +38,13 @@ int	temp_parse(t_minirt *scene)
 		return (1);
 	scene->ambient->color = make_color(255, 255, 255);
 	scene->ambient->ratio = 0.5;
-	scene->camera->fov = 90.0;
+	scene->camera->fov = 70.0;
 	scene->camera->pos = make_vector(0, 0, 0);
-	scene->light->color = make_color(0, 0, 255);
+	scene->camera->rot = make_vector(0, 0, 0);
+	scene->light->color = make_color(255, 255, 255);
 	scene->light->lum = 1;
-	scene->light->pos = make_vector(0, 0, 600);
-	scene->sphere->pos = make_vector(XSIZE * 0.5, YSIZE * 0.5, 20);
+	scene->light->pos = make_vector(0, 0, 0);
+	scene->sphere->pos = make_vector(0, 0, 300);
 	scene->sphere->color = make_color(0, 255, 0);
 	scene->sphere->diameter = 150;
 	scene->plane->color = make_color(0, 255, 0);
@@ -66,6 +67,7 @@ int	main(int argc, char **argv)
 		return (1);
 	//parsing and filling of struct
 	basic_tracer(&scene);//calculations and filling of image with pixel data
+	printf("done\n");
 	mlx_put_image_to_window(scene.mlxref.mlx, scene.mlxref.win, scene.mlxref.imgref.img, 0, 0);//display image
 	mlx_key_hook(scene.mlxref.win, key_hook, &scene);//assign key to exit
 	mlx_loop(scene.mlxref.mlx);//loop

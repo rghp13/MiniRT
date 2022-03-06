@@ -11,8 +11,12 @@
 # include "libft.h"
 # include "../minilibx-linux/mlx.h"
 
-# define XSIZE 1280
-# define YSIZE 720
+/*
+For the math to works, XSIZE has to be bigger than YSIZE
+*/
+
+# define XSIZE 1920//1280
+# define YSIZE 1080//720
 # define KEY_ESCAPE 65307
 # define WHITE 0x00FFFFFF
 # define ER1 "ERROR : MALLOC FAILURE "
@@ -203,11 +207,12 @@ t_color		vector_to_color(t_vector3d vector);
 Tracing Functions (functions that deal with the raytracing logic)
 */
 int			basic_tracer(t_minirt *scene);
+int			test(t_minirt *scene);
 
 /*
 Sphere Functions (functions that handle math related to spheres)
 */
 int			sphere_intersect(t_sphere *sphere, t_ray ray, double *t);
-t_vector3d	get_normal(t_sphere *sphere, t_vector3d vec);
+t_vector3d	sphere_normal(t_sphere *sphere, t_vector3d vec);
 
 #endif
