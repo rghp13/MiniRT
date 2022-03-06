@@ -11,6 +11,10 @@
 # include "libft.h"
 # include "../minilibx-linux/mlx.h"
 
+/*
+For the math to works, XSIZE has to be bigger than YSIZE
+*/
+
 # define XSIZE 1280
 # define YSIZE 720
 # define KEY_ESCAPE 65307
@@ -178,6 +182,7 @@ t_color		vector_to_color(t_vector3d vector);
 Tracing Functions (functions that deal with the raytracing logic)
 */
 int			basic_tracer(t_minirt *scene);
+int			test(t_minirt *scene);
 
 /*
 Sphere Functions (functions that handle math related to spheres)

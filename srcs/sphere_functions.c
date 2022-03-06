@@ -14,7 +14,9 @@ int	sphere_intersect(t_sphere *sphere, t_ray ray, double *t)
 	if (disk < 0.0001)
 		return (0);
 	disk = sqrt(disk);
-	if (-b - disk < -b - disk)
+	if (-b - disk < 0 && -b + disk < 0)
+		return (0);
+	if (-b - disk < -b + disk && -b - disk > 0)
 		*t = -b - disk;
 	else
 		*t = -b + disk;

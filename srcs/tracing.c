@@ -12,14 +12,15 @@ int	basic_tracer(t_minirt *scene)
 
 	pixel.x = 0;
 	pixel.y = 0;
+	t = 0;
 	pixel.color = make_color(255, 255, 255);
 	while (pixel.y < YSIZE)
 	{
 		pixel.x = 0;
 		while (pixel.x < XSIZE)
 		{
-			ray.origin = make_vector(pixel.x, pixel.y, 0);
-			ray.direction = make_vector(0, 0, 1);
+			ray.origin = make_vector(scene->camera->pos.x + pixel.x, scene->camera->pos.y + pixel.y, 0);
+			ray.direction = scene->camera->rot;
 			pixel.color = make_color(0, 0, 0);
 			if (sphere_intersect(scene->sphere, ray, &t))
 			{
@@ -35,4 +36,39 @@ int	basic_tracer(t_minirt *scene)
 		pixel.y++;
 	}
 	return (0);
+}
+
+t_ray	generate_ray(t_minirt *scene, t_pixel pixel)
+{
+	t_ray		ray;
+	t_vector3d	pixeloffset;
+	double		focal_length;
+
+	ray.origin = scene->camera->pos;
+	pixeloffset = make_vector(pixel.x - (XSIZE / 2), pixel.y - (YSIZE / 2), 0);
+	focal_length = (XSIZE / 2) / tan((scene->camera->fov / 2) * (M_PI / 180));
+	ray.direction = normalize_vector(add_vec(multiply_vector(scene->camera->rot, focal_length), pixeloffset));
+	return (ray);
+}
+
+int	test(t_minirt *scene)
+{
+	t_pixel		pixel;
+	t_ray		ray;
+
+	pixel.x = 0;
+	pixel.y = 0;
+	while (pixel.y < YSIZE)
+	{
+		pixel.x = 0;
+		while (pixel.x < XSIZE)
+		{
+			ray = generate_ray(scene, pixel);
+			printf("%d %d: (%f, %f, %f) going towards (%f, %f, %f)\n", pixel.x, pixel.y, ray.origin.x, ray.origin.y, ray.origin.z, ray.direction.x, ray.direction.y, ray.direction.z);
+			pixel.x++;
+		}
+		printf("\n\n\n");
+		pixel.y++;
+	}
+	return(0);
 }
