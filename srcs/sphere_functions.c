@@ -3,27 +3,23 @@
 int	sphere_intersect(t_sphere *sphere, t_ray ray, double *t)
 {
 	t_vector3d	oc;
+	double		a;
 	double		b;
 	double		c;
-	double		disk;
+	double		disc;
 
 	oc = subtract_vec(ray.origin, sphere->pos);
-	b = 2 * dot_vector(oc, ray.direction);
-	c = dot_vector(oc, oc)  - (sphere->diameter / 2) * (sphere->diameter / 2);
-	disk = b * b - 4 * c;
-	if (disk < 0.0001)
+	a = dot_vector(ray.direction, ray.direction);
+	b = 2.0 * dot_vector(oc, ray.direction);
+	c = dot_vector(oc, oc) - ((sphere->diameter / 2) * (sphere->diameter / 2));
+	disc = b * b - (4 * a * c);
+	if (disc < 0)
 		return (0);
-	disk = sqrt(disk);
-	if (-b - disk < 0 && -b + disk < 0)
-		return (0);
-	if (-b - disk < -b + disk && -b - disk > 0)
-		*t = -b - disk;
-	else
-		*t = -b + disk;
-	return (1);
+	*t = (-b - sqrt(disc)) / (2.0*a);
+	return(1);
 }
 
-t_vector3d	get_normal(t_sphere *sphere, t_vector3d vec)
+t_vector3d	sphere_normal(t_sphere *sphere, t_vector3d vec)
 {
 	return (divide_vector(subtract_vec(vec, sphere->pos), sphere->diameter / 2));
 }
