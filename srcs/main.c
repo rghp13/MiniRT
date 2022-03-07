@@ -62,9 +62,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (1);
 	scene = init_scene_struct(); //initialization
-	if (temp_parse(&scene))
-		return (1);
-	//parsing and filling of struct
+	//if (temp_parse(&scene))
+	//	return (1);
+	if (parse(argv, &scene) || !scene.ambient || !scene.camera || !scene.light)
+		exit_cleanly(&scene, 1);
 	basic_tracer(&scene);//calculations and filling of image with pixel data
 	mlx_put_image_to_window(scene.mlxref.mlx, scene.mlxref.win, scene.mlxref.imgref.img, 0, 0);//display image
 	mlx_key_hook(scene.mlxref.win, key_hook, &scene);//assign key to exit

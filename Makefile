@@ -26,6 +26,7 @@ SRC_NAME				=		main.c \
 								parse.c \
 								parse_utils.c \
 								parse_utils2.c \
+								parse_utils3.c \
 								parse_ambient.c \
 								parse_camera.c \
 								parse_cone.c \
@@ -45,7 +46,8 @@ SRC_NAME				=		main.c \
 								simple_vector_math.c \
 								advanced_vector_math.c \
 								sphere_functions.c \
-								free.c
+								free.c \
+								free2.c
 
 NAME					=		minirt
 OBJ_NAME				=		$(SRC_NAME:.c=.o)
@@ -66,7 +68,7 @@ ${NAME}:						${OBJ}
 								@make --no-print-directory -C ${LIBX_FD}
 								@${CC} $^ -o $@ ${CFLAG} ${PATH_LIB}/${LIBFT_A} ${LIBX_FD}/libmlx.a ${LDLIBS}
 								@printf "${CYAN}[COMPILATION COMPLETE]${NC}\n"
-								@printf "${PURPLE}$$HEADER${NC}\n"
+								@printf "${GREEN}$$HEADER${NC}\n"
 all:							${NAME}
 
 clean:

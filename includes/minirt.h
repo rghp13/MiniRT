@@ -111,6 +111,7 @@ typedef struct s_cone
 	t_vector3d		pos;
 	t_vector3d		rot;
 	double			angle;
+	t_color			color;
 	struct s_cone	*next;
 }					t_cone;
 
@@ -151,11 +152,17 @@ int			key_hook(int key, t_minirt *scene);
 **Free Functions (functions that are related to freeing malloced memory)
 */
 void	exit_cleanly(t_minirt *scene, int status);
+void	light_free(t_light *light);
+void	sphere_free(t_sphere *sphere);
+void	plane_free(t_plane *plane);
+void	cylinder_free(t_cylinder *cylinder);
+void	cone_free(t_cone *cone);
 /*
 **Parse.c
 */
 int		parse(char **argv, t_minirt *scene);
 int		prepare_file(char **argv, int *fd, t_minirt *scene);
+int		scan_text(const char *str, t_minirt *scene, int ret);
 /*
 **parse_utils.c
 */
@@ -165,16 +172,53 @@ int		empty_line(const char *str);
 int		check_valid_content(const char *str);
 int		approved_char(const char str);
 /*
+**parse_utils2.c
+*/
+int		split_count(char **split);
+int		valid_color_check(char **split);
+int		remove_nl(char *str);
+int		parse_positive_double(char *str, double *num);
+int		parse_color(char *str, t_color *color);
+/*
+**parse_utils3.c
+*/
+int		parse_vector(const char *str, t_vector3d *vector);
+int		valid_vector_check(char **split);
+int		rot_range(t_vector3d *rotation);
+int		fov_range(double num);
+/*
 **parse_ambient.c
 */
 int		ambient_parse(char **split, t_minirt *scene);
+/*
+**parse_camera.c
+*/
 int		camera_parse(char **split, t_minirt *scene);
+/*
+**parse_cone.c
+*/
 int		cone_parse(char **split, t_minirt *scene);
+void	cone_add_last(t_minirt *scene, t_cone *cone);
+/*
+**parse_cylinder.c
+*/
 int		cylinder_parse(char **split, t_minirt *scene);
+void	cylinder_add_last(t_minirt *scene, t_cylinder *cyl);
+/*
+**parse_light.c
+*/
 int		light_parse(char **split, t_minirt *scene);
+void	light_add_last(t_minirt *scene, t_light *light);
+/*
+**parse_plane.c
+*/
 int		plane_parse(char **split, t_minirt *scene);
+void	plane_add_last(t_minirt *scene, t_plane *plane);
+/*
+**parse_sphere.c
+*/
 int		sphere_parse(char **split, t_minirt *scene);
-
+void	sphere_add_last(t_minirt *scene, t_sphere *sphere);
 /*
 Simple Vector Math (functions that allow for simple manipulations of vectors)
 */
