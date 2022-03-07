@@ -124,7 +124,7 @@ void	print_parse(t_minirt *scene)
 		printf("COLOR R = %d, G = %d, B = %d\n", con->color.r, con->color.g, con->color.b);
 		con = con->next;
 	}
-	exit_cleanly(scene, 0);
+	//exit_cleanly(scene, 0);
 }
 
 int	main(int argc, char **argv)
