@@ -48,11 +48,12 @@ int	temp_parse(t_minirt *scene)
 	scene->sphere->color = make_color(0, 255, 0);
 	scene->sphere->diameter = 150;
 	scene->plane->color = make_color(0, 255, 0);
-	scene->plane->pos.y = 10.0;
+	scene->plane->pos = make_vector(600, 800, 0);
+	scene->plane->rot = make_vector(-0.8, -0.3, 0);
 	scene->cylinder->color = make_color(0, 0, 255);
-	scene->cylinder->diameter = 3.0;
-	scene->cylinder->height = 4.0;
-	scene->cylinder->pos.z = 10.0;
+	scene->cylinder->diameter = 100;
+	scene->cylinder->height = 150;
+	scene->cylinder->pos = make_vector(0, 0, 300);
 	return (0);
 }
 

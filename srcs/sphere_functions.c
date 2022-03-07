@@ -21,5 +21,10 @@ int	sphere_intersect(t_sphere *sphere, t_ray ray, double *t)
 
 t_vector3d	sphere_normal(t_sphere *sphere, t_vector3d vec)
 {
-	return (divide_vector(subtract_vec(vec, sphere->pos), sphere->diameter / 2));
+	t_vector3d	normal;
+
+	normal = divide_vector(subtract_vec(vec, sphere->pos), sphere->diameter / 2);
+	if (dot_vector(normal, vec) > 0)
+		return (multiply_vector(normal, -1));
+	return (normal);
 }

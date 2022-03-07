@@ -13,7 +13,7 @@ t_ray	generate_ray(t_minirt *scene, t_pixel pixel)
 	return (ray);
 }
 
-int	basic_tracer(t_minirt *scene)
+int	sphere_tracer(t_minirt *scene)
 {
 	t_pixel		pixel;
 	t_ray		ray;
@@ -41,6 +41,43 @@ int	basic_tracer(t_minirt *scene)
 				N = sphere_normal(scene->sphere, P);
 				dt = dot_vector(normalize_vector(L), normalize_vector(N));
 				pixel.color = vector_to_color(multiply_vector(add_vec(color_to_vector(scene->sphere->color), multiply_vector(color_to_vector(scene->light->color), dt)), scene->light->lum));
+			}
+			mlx_draw_pixel(&scene->mlxref.imgref, pixel);
+			pixel.x++;
+		}
+		pixel.y++;
+	}
+	return (0);
+}
+
+int	basic_tracer(t_minirt *scene)
+{
+	t_pixel		pixel;
+	t_ray		ray;
+	double		t;
+	t_vector3d	N;
+	t_vector3d	P;
+	t_vector3d	L;
+	double		dt;
+
+	pixel.x = 0;
+	pixel.y = 0;
+	t = 0;
+	pixel.color = make_color(0, 0, 0);
+	while (pixel.y < YSIZE)
+	{
+		pixel.x = 0;
+		while (pixel.x < XSIZE)
+		{
+			ray = generate_ray(scene, pixel);
+			pixel.color = make_color(pixel.x / 3, pixel.y / 2, 255);
+			if (cylinder_intersect(scene->cylinder, ray, &t))
+			{
+				P = add_vec(ray.origin, multiply_vector(ray.direction, t));
+				L = subtract_vec(scene->light->pos, P);
+				N = cylinder_normal(scene->cylinder, P);
+				dt = dot_vector(normalize_vector(L), normalize_vector(N));
+				pixel.color = vector_to_color(multiply_vector(add_vec(color_to_vector(scene->cylinder->color), multiply_vector(color_to_vector(scene->light->color), dt)), scene->light->lum));
 			}
 			mlx_draw_pixel(&scene->mlxref.imgref, pixel);
 			pixel.x++;

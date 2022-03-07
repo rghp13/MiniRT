@@ -15,8 +15,8 @@
 For the math to works, XSIZE has to be bigger than YSIZE
 */
 
-# define XSIZE 1920//1280
-# define YSIZE 1080//720
+# define XSIZE 1280
+# define YSIZE 720
 # define KEY_ESCAPE 65307
 # define WHITE 0x00FFFFFF
 # define ER1 "ERROR : MALLOC FAILURE "
@@ -258,5 +258,17 @@ Sphere Functions (functions that handle math related to spheres)
 */
 int			sphere_intersect(t_sphere *sphere, t_ray ray, double *t);
 t_vector3d	sphere_normal(t_sphere *sphere, t_vector3d vec);
+
+/*
+plane Functions (functions that handle math related to planes)
+*/
+int			plane_intersect(t_plane *plane, t_ray ray, double *t);
+t_vector3d	plane_normal(t_plane *plane, t_vector3d vec);
+
+/*
+Cylinder Functions (functions that handle math related to cylinders)
+*/
+int			cylinder_intersect(t_cylinder *cylinder, t_ray ray, double *t);
+t_vector3d	cylinder_normal(t_cylinder *cylinder, t_vector3d vec);
 
 #endif
