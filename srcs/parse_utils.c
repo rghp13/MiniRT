@@ -43,7 +43,7 @@ int	check_valid_content(const char *str)
 		if (approved_char(str[i]))
 			continue ;
 		if (str[i] == '-' || str[i] == ',' || str[i] == '.' || str[i] == ' ' || \
-		str[i] == '\t' || str[i] == '\n')
+		str[i] == '\t' || str[i] == '\n' || ft_isdigit(str[i]))
 			continue ;
 		return (1);
 	}

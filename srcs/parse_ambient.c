@@ -2,8 +2,8 @@
 
 int	ambient_parse(char **split, t_minirt *scene)
 {
-	int	i;
-	t_alight *light;
+	int			i;
+	t_alight	*light;
 
 	i = 0;
 	if (scene->ambient)
