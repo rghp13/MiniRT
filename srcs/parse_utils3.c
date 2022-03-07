@@ -35,7 +35,8 @@ int	valid_vector_check(char **split)
 	{
 		while (split[i][c])
 		{
-			if (!(ft_isdigit(split[i][c]) || split[i][0] == '-'))
+			if (!(ft_isdigit(split[i][c]) || split[i][0] == '-' || split[i][c] \
+			== '.'))
 				return (1);
 			c++;
 		}
@@ -59,7 +60,7 @@ int	rot_range(t_vector3d *rotation)
 
 int	fov_range(double num)
 {
-	if (num > 1.0 || num < 0.0)
+	if (num > 180.0 || num < 0.0)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:07:44 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/05 21:52:49 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:31:42 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ double	ft_atof(const char *str)
 	var.i = 0;
 	var.num = 0.0;
 	var.exponent = 0;
-	if (str == NULL)
-		return (0);
+	var.negative = 0;
 	if (str[var.i] == '-')
 		var.negative = ++var.i;
 	while (str[var.i] && ft_isdigit(str[var.i]))

@@ -43,7 +43,7 @@ typedef struct s_mlx_base {
 typedef struct s_color {
 	int	r;
 	int	g;
-	int b;
+	int	b;
 }			t_color;
 
 typedef struct s_pixel {
@@ -58,7 +58,7 @@ typedef struct s_vector3d {
 	double	z;
 }				t_vector3d;
 
-typedef	struct s_ray {
+typedef struct s_ray {
 	t_vector3d	origin;
 	t_vector3d	direction;
 }				t_ray;
@@ -155,74 +155,74 @@ int			key_hook(int key, t_minirt *scene);
 /*
 **Free Functions (functions that are related to freeing malloced memory)
 */
-void	exit_cleanly(t_minirt *scene, int status);
-void	light_free(t_light *light);
-void	sphere_free(t_sphere *sphere);
-void	plane_free(t_plane *plane);
-void	cylinder_free(t_cylinder *cylinder);
-void	cone_free(t_cone *cone);
+void		exit_cleanly(t_minirt *scene, int status);
+void		light_free(t_light *light);
+void		sphere_free(t_sphere *sphere);
+void		plane_free(t_plane *plane);
+void		cylinder_free(t_cylinder *cylinder);
+void		cone_free(t_cone *cone);
 /*
 **Parse.c
 */
-int		parse(char **argv, t_minirt *scene);
-int		prepare_file(char **argv, int *fd, t_minirt *scene);
-int		scan_text(const char *str, t_minirt *scene, int ret);
+int			parse(char **argv, t_minirt *scene);
+int			prepare_file(char **argv, int *fd, t_minirt *scene);
+int			scan_text(const char *str, t_minirt *scene, int ret);
 /*
 **parse_utils.c
 */
-int		print_error(const char *str, int ret);
-int		check_valid_file(const char *filename);
-int		empty_line(const char *str);
-int		check_valid_content(const char *str);
-int		approved_char(const char str);
+int			print_error(const char *str, int ret);
+int			check_valid_file(const char *filename);
+int			empty_line(const char *str);
+int			check_valid_content(const char *str);
+int			approved_char(const char str);
 /*
 **parse_utils2.c
 */
-int		split_count(char **split);
-int		valid_color_check(char **split);
-int		remove_nl(char *str);
-int		parse_positive_double(char *str, double *num);
-int		parse_color(char *str, t_color *color);
+int			split_count(char **split);
+int			valid_color_check(char **split);
+int			remove_nl(char *str);
+int			parse_positive_double(char *str, double *num);
+int			parse_color(char *str, t_color *color);
 /*
 **parse_utils3.c
 */
-int		parse_vector(const char *str, t_vector3d *vector);
-int		valid_vector_check(char **split);
-int		rot_range(t_vector3d *rotation);
-int		fov_range(double num);
+int			parse_vector(const char *str, t_vector3d *vector);
+int			valid_vector_check(char **split);
+int			rot_range(t_vector3d *rotation);
+int			fov_range(double num);
 /*
 **parse_ambient.c
 */
-int		ambient_parse(char **split, t_minirt *scene);
+int			ambient_parse(char **split, t_minirt *scene);
 /*
 **parse_camera.c
 */
-int		camera_parse(char **split, t_minirt *scene);
+int			camera_parse(char **split, t_minirt *scene);
 /*
 **parse_cone.c
 */
-int		cone_parse(char **split, t_minirt *scene);
-void	cone_add_last(t_minirt *scene, t_cone *cone);
+int			cone_parse(char **split, t_minirt *scene);
+void		cone_add_last(t_minirt *scene, t_cone *cone);
 /*
 **parse_cylinder.c
 */
-int		cylinder_parse(char **split, t_minirt *scene);
-void	cylinder_add_last(t_minirt *scene, t_cylinder *cyl);
+int			cylinder_parse(char **split, t_minirt *scene);
+void		cylinder_add_last(t_minirt *scene, t_cylinder *cyl);
 /*
 **parse_light.c
 */
-int		light_parse(char **split, t_minirt *scene);
-void	light_add_last(t_minirt *scene, t_light *light);
+int			light_parse(char **split, t_minirt *scene);
+void		light_add_last(t_minirt *scene, t_light *light);
 /*
 **parse_plane.c
 */
-int		plane_parse(char **split, t_minirt *scene);
-void	plane_add_last(t_minirt *scene, t_plane *plane);
+int			plane_parse(char **split, t_minirt *scene);
+void		plane_add_last(t_minirt *scene, t_plane *plane);
 /*
 **parse_sphere.c
 */
-int		sphere_parse(char **split, t_minirt *scene);
-void	sphere_add_last(t_minirt *scene, t_sphere *sphere);
+int			sphere_parse(char **split, t_minirt *scene);
+void		sphere_add_last(t_minirt *scene, t_sphere *sphere);
 /*
 Simple Vector Math (functions that allow for simple manipulations of vectors)
 */
@@ -241,7 +241,7 @@ double		dot_vector(t_vector3d v1, t_vector3d v2);
 /*
 Color Math (functions that allow for the manipulation of colors)
 */
-t_color 	clamp_color(t_color color);
+t_color		clamp_color(t_color color);
 t_color		make_color(int r, int g, int b);
 int			int_color(t_color color);
 t_vector3d	color_to_vector(t_color color);
