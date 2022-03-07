@@ -31,7 +31,7 @@ int	cone_parse(char **spl, t_minirt *scene)
 
 void	cone_add_last(t_minirt *scene, t_cone *cone)
 {
-	t_cone *hold;
+	t_cone	*hold;
 
 	hold = scene->cone;
 	while (hold->next)

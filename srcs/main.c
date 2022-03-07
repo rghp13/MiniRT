@@ -56,6 +56,77 @@ int	temp_parse(t_minirt *scene)
 	scene->cylinder->pos = make_vector(0, 0, 300);
 	return (0);
 }
+void	print_parse(t_minirt *scene)
+{
+	t_light *li;
+	t_sphere *sph;
+	t_plane *pla;
+	t_cylinder *cyl;
+	t_cone *con;
+
+	li = scene->light;
+	sph = scene->sphere;
+	pla = scene->plane;
+	cyl = scene->cylinder;
+	con = scene->cone;
+	if (scene->ambient)
+	{
+		printf("AMBIENT LIGHT\n");
+		printf("RATIO = %f\n", scene->ambient->ratio);
+		printf("COLOR R = %d, G = %d, B = %d\n", scene->ambient->color.r, scene->ambient->color.g, scene->ambient->color.b);
+	}
+	if (scene->camera)
+	{
+		printf("CAMERA\n");
+		printf("x = %f\ny = %f\nz = %f\n", scene->camera->pos.x, scene->camera->pos.y, scene->camera->pos.z);
+		printf("x = %f\ny = %f\nz = %f\n", scene->camera->rot.x, scene->camera->rot.y, scene->camera->rot.z);
+		printf("FOV = %f\n", scene->camera->fov);
+	}
+	while (li)
+	{
+		printf("LIGHT\n");
+		printf("x = %f\ny = %f\nz = %f\n", li->pos.x, li->pos.y, li->pos.z);
+		printf("LUM = %f\n", li->lum);
+		printf("COLOR R = %d, G = %d, B = %d\n", li->color.r, li->color.g, li->color.b);
+		li = li->next;
+	}
+	while (sph)
+	{
+		printf("SPHERE\n");
+		printf("x = %f\ny = %f\nz = %f\n", sph->pos.x, sph->pos.y, sph->pos.z);
+		printf("Diameter = %f\n", sph->diameter);
+		printf("COLOR R = %d, G = %d, B = %d\n", sph->color.r, sph->color.g, sph->color.b);
+		sph = sph->next;
+	}
+	while (pla)
+	{
+		printf("PLANE\n");
+		printf("x = %f\ny = %f\nz = %f\n", pla->pos.x, pla->pos.y, pla->pos.z);
+		printf("x = %f\ny = %f\nz = %f\n", pla->rot.x, pla->rot.y, pla->rot.z);
+		printf("COLOR R = %d, G = %d, B = %d\n", pla->color.r, pla->color.g, pla->color.b);
+		pla = pla->next;
+	}
+	while (cyl)
+	{
+		printf("CYLINDER\n");
+		printf("x = %f\ny = %f\nz = %f\n", cyl->pos.x, cyl->pos.y, cyl->pos.z);
+		printf("x = %f\ny = %f\nz = %f\n", cyl->rot.x, cyl->rot.y, cyl->rot.z);
+		printf("Diameter %f\n", cyl->diameter);
+		printf("Height %f\n", cyl->height);
+		printf("COLOR R = %d, G = %d, B = %d\n", cyl->color.r, cyl->color.g, cyl->color.b);
+		cyl = cyl->next;
+	}
+	while (con)
+	{
+		printf("CONE\n");
+		printf("x = %f\ny = %f\nz = %f\n", con->pos.x, con->pos.y, con->pos.z);
+		printf("x = %f\ny = %f\nz = %f\n", con->rot.x, con->rot.y, con->rot.z);
+		printf("Angle %f\n", con->angle);
+		printf("COLOR R = %d, G = %d, B = %d\n", con->color.r, con->color.g, con->color.b);
+		con = con->next;
+	}
+	exit_cleanly(scene, 0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -63,11 +134,12 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	scene = init_scene_struct(); //initialization
+	scene = init_scene_struct();
 	//if (temp_parse(&scene))
 	//	return (1);
 	if (parse(argv, &scene) || !scene.ambient || !scene.camera || !scene.light)
 		exit_cleanly(&scene, 1);
+	print_parse(&scene);
 	basic_tracer(&scene);//calculations and filling of image with pixel data
 	printf("done\n");
 	mlx_put_image_to_window(scene.mlxref.mlx, scene.mlxref.win, scene.mlxref.imgref.img, 0, 0);//display image
