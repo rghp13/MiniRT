@@ -12,41 +12,50 @@ int	parse(char **argv, t_minirt *scene)
 		hold = get_next_line(fd);
 		if (!hold)
 			break ;
-		scan_text(hold, scene);
+		remove_nl(hold);
+		if (check_valid_content(hold))
+		{
+			close(fd);
+			return (print_error(ER6, 1));
+		}
+		if (scan_text(hold, scene, 0))
+		{
+			free(hold);
+			close(fd);
+			return (1);
+		}
 		free(hold);
 	}
-	return (0);
+	return (close(fd));
 }
 
-int	scan_text(const char *str, t_minirt *scene)
+int	scan_text(const char *str, t_minirt *scene, int ret)
 {
 	char	**split;
 
-	if (check_valid_content(str))
-		return (print_error(ER6, 1));
 	if (empty_line(str) == 0)
-		return;
+		return (0);
 	split = ft_split(str, ' ');
 	if (split == NULL || split[0] == NULL || split[0][0] == '\n')
 		return (ft_free_all_split(split));
 	if (ft_stringcomp(split[0], "A") == 0)
-		ambient_parse(split, scene);
+		ret |= ambient_parse(split, scene);
 	else if (ft_stringcomp(split[0], "C") == 0)
-		camera_parse(split, scene);
+		ret |= camera_parse(split, scene);
 	else if (ft_stringcomp(split[0], "L") == 0)
-		light_parse(split, scene);
+		ret |= light_parse(split, scene);
 	else if (ft_stringcomp(split[0], "sp") == 0)
-		sphere_parse(split, scene);
+		ret |= sphere_parse(split, scene);
 	else if (ft_stringcomp(split[0], "pl") == 0)
-		plane_parse(split, scene);
+		ret |= plane_parse(split, scene);
 	else if (ft_stringcomp(split[0], "cy") == 0)
-		cylinder_parse(split, scene);
-	else if (ft_strincomp(split[0], "co") == 0)
-		cone_parse(split, scene);
+		ret |= cylinder_parse(split, scene);
+	else if (ft_stringcomp(split[0], "co") == 0)
+		ret |= cone_parse(split, scene);
 	else
-		scene->parsing_error = print_error(ER4, 1);
+		ret |= print_error(ER4, 1);
 	ft_free_all_split(split);
-	return (0);
+	return (ret);
 }
 
 /*
