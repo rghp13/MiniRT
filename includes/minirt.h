@@ -132,6 +132,19 @@ typedef struct s_minirt
 	int			parsing_error;
 }				t_minirt;
 
+
+/*
+Matrix Functions (functions that apply matrix transformations to vectors)
+*/
+t_vector3d	transform_t_translate(t_vector3d vec, t_vector3d t_vec);
+t_vector3d	transform_translate(t_vector3d vec, double t_x, double t_y, double t_z);
+t_vector3d	transform_translate(t_vector3d vec, double t_x, double t_y, double t_z);
+t_vector3d	x_axis_rotation(t_vector3d vec, double theta);
+t_vector3d	y_axis_rotation(t_vector3d vec, double theta);
+t_vector3d	z_axis_rotation(t_vector3d vec, double theta);
+t_vector3d	transform_t_rotate(t_vector3d vec, t_vector3d rotation);
+t_vector3d	transform_rotate(t_vector3d vec, double r_x, double r_y, double r_z);
+
 /*
 **Draw Functions (functions that change parts of the image)
 */

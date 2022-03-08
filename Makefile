@@ -49,6 +49,8 @@ SRC_NAME				=		main.c \
 								sphere_functions.c \
 								plane_functions.c \
 								cylinder_functions.c \
+								matrix_rotate.c \
+								matrix_translate.c \
 								free.c \
 								free2.c
 
