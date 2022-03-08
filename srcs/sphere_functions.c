@@ -12,10 +12,13 @@ int	sphere_intersect(t_sphere *sphere, t_ray ray, t_hit_result *hr)
 		return (0);
 	if (qua.t1 < 0 && qua.t2 < 0)
 		return (0);
-	if (qua.t1 < qua.t2 && qua.t1 > 0)
+	if (qua.t1 < qua.t2 || (qua.t1 > 0 && qua.t2 < 0))
 		hr->t = qua.t1;
 	else
 		hr->t = qua.t2;
+	hr->inter_point = add_vec(ray.origin, multiply_vector(ray.direction, hr->t));
+	hr->normal = sphere_normal(sphere, hr->inter_point);
+	hr->color_at_hit = sphere->color;
 	return(1);
 }
 

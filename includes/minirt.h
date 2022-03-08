@@ -79,6 +79,7 @@ typedef struct s_hit_result {
 	t_vector3d	normal;
 	t_vector3d	obj_to_cam;
 	double		normal_cam_dot;
+	t_color		color_at_hit;
 }				t_hit_result;
 
 typedef struct s_alight
@@ -254,6 +255,7 @@ void		plane_add_last(t_minirt *scene, t_plane *plane);
 */
 int			sphere_parse(char **split, t_minirt *scene);
 void		sphere_add_last(t_minirt *scene, t_sphere *sphere);
+
 /*
 Simple Vector Math (functions that allow for simple manipulations of vectors)
 */
@@ -289,6 +291,11 @@ Tracing Functions (functions that deal with the raytracing logic)
 */
 int			basic_tracer(t_minirt *scene);
 int			test(t_minirt *scene);
+
+/*
+Intersection Functions (functions that calculate hit data for objects)
+*/
+int			find_closest_intersection(t_minirt *scene, t_ray ray, t_hit_result *closest_hit);
 
 /*
 Sphere Functions (functions that handle math related to spheres)

@@ -12,6 +12,9 @@ int	plane_intersect(t_plane *plane, t_ray ray, t_hit_result *hr)
 	hr->t = dot_vector(oc, plane->rot) / disc;
 	if (hr->t < 0)
 		return (0);
+	hr->inter_point = add_vec(ray.origin, multiply_vector(ray.direction, hr->t));
+	hr->normal = plane_normal(plane, hr->inter_point);
+	hr->color_at_hit = plane->color;
 	return(1);
 }
 

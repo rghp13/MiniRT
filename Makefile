@@ -39,6 +39,7 @@ SRC_NAME				=		main.c \
 								parse_plane.c \
 								parse_sphere.c \
 								tracing.c \
+								intersection_checks.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
