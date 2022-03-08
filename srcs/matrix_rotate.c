@@ -43,8 +43,8 @@ t_vector3d	transform_t_rotate(t_vector3d vec, t_vector3d rotation)
 
 t_vector3d	transform_rotate(t_vector3d vec, double r_x, double r_y, double r_z)
 {
-	vec = x_axis_rotation(vec, r_x);
-	vec = y_axis_rotation(vec, r_y);
 	vec = z_axis_rotation(vec, r_z);
+	vec = y_axis_rotation(vec, r_y);
+	vec = x_axis_rotation(vec, r_x);
 	return (vec);
 }

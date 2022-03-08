@@ -58,10 +58,28 @@ typedef struct s_vector3d {
 	double	z;
 }				t_vector3d;
 
+typedef	struct s_quadratic {
+	t_vector3d	oc;
+	double		a;
+	double		b;
+	double		c;
+	double		delta;
+	double		t1;
+	double		t2;
+}				t_quadratic;
+
 typedef struct s_ray {
 	t_vector3d	origin;
 	t_vector3d	direction;
 }				t_ray;
+
+typedef struct s_hit_result {
+	double		t;
+	t_vector3d	inter_point;
+	t_vector3d	normal;
+	t_vector3d	obj_to_cam;
+	double		normal_cam_dot;
+}				t_hit_result;
 
 typedef struct s_alight
 {
@@ -249,7 +267,13 @@ t_vector3d	divide_vector(t_vector3d v1, double d);
 Advanced Vector Math (functions that allow for simple manipulations of vectors)
 */
 t_vector3d	normalize_vector(t_vector3d v1);
+t_vector3d	cross_vector(t_vector3d v1, t_vector3d v2);
 double		dot_vector(t_vector3d v1, t_vector3d v2);
+
+/*
+Quadratic Functions (functions that help solve quadratics)
+*/
+int			solve_quadratic(t_quadratic *qua);
 
 /*
 Color Math (functions that allow for the manipulation of colors)
@@ -269,19 +293,19 @@ int			test(t_minirt *scene);
 /*
 Sphere Functions (functions that handle math related to spheres)
 */
-int			sphere_intersect(t_sphere *sphere, t_ray ray, double *t);
+int			sphere_intersect(t_sphere *sphere, t_ray ray, t_hit_result *hr);
 t_vector3d	sphere_normal(t_sphere *sphere, t_vector3d vec);
 
 /*
 plane Functions (functions that handle math related to planes)
 */
-int			plane_intersect(t_plane *plane, t_ray ray, double *t);
+int			plane_intersect(t_plane *plane, t_ray ray, t_hit_result *hr);
 t_vector3d	plane_normal(t_plane *plane, t_vector3d vec);
 
 /*
 Cylinder Functions (functions that handle math related to cylinders)
 */
-int			cylinder_intersect(t_cylinder *cylinder, t_ray ray, double *t);
+int			cylinder_intersect(t_cylinder *cylinder, t_ray ray, t_hit_result *hr);
 t_vector3d	cylinder_normal(t_cylinder *cylinder, t_vector3d vec);
 
 #endif

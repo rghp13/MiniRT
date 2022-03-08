@@ -46,6 +46,7 @@ SRC_NAME				=		main.c \
 								keyboard.c \
 								simple_vector_math.c \
 								advanced_vector_math.c \
+								quadratic_functions.c \
 								sphere_functions.c \
 								plane_functions.c \
 								cylinder_functions.c \

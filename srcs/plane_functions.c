@@ -1,6 +1,6 @@
 #include "../includes/minirt.h"
 
-int	plane_intersect(t_plane *plane, t_ray ray, double *t)
+int	plane_intersect(t_plane *plane, t_ray ray, t_hit_result *hr)
 {
 	t_vector3d	oc;
 	double		disc;
@@ -9,8 +9,8 @@ int	plane_intersect(t_plane *plane, t_ray ray, double *t)
 	if (disc < 0)
 		return (0);
 	oc = subtract_vec(plane->pos, ray.origin);
-	*t = dot_vector(oc, plane->rot) / disc;
-	if (t < 0)
+	hr->t = dot_vector(oc, plane->rot) / disc;
+	if (hr->t < 0)
 		return (0);
 	return(1);
 }
