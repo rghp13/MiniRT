@@ -1,27 +1,45 @@
 #include "../includes/minirt.h"
 
-int	cylinder_intersect(t_cylinder *cylinder, t_ray ray, double *t)
+int	cylinder_intersect(t_cylinder *cylinder, t_ray ray, t_hit_result *hr)
 {
-	t_vector3d	u;
-	t_vector3d	v;
+	t_vector3d	temp_pos;
 	double		a;
 	double		b;
 	double		c;
+	double		delta;
 
-	v = multiply_vector(cylinder->rot, dot_vector(ray.direction, cylinder->rot));
-	v = subtract_vec(ray.direction, v);
-	u = multiply_vector(cylinder->rot, dot_vector(subtract_vec(ray.origin, cylinder->pos), cylinder->rot));
-	u = subtract_vec(subtract_vec(ray.origin, cylinder->pos), u);
-	a = dot_vector(v, v);
-	b = 2 * dot_vector(v, u);
-	c = dot_vector(u, u) - (cylinder->diameter / 2 * cylinder->diameter / 2);
-	*t = (-b - sqrt(pow(b, 2) - 4 * a * c)) / (2 * a);
-	if (t < 0)
-		return (0);
-	return(1);
+	// ray.origin = transform_translate(ray.origin, -cylinder->pos.x, -cylinder->pos.y, -cylinder->pos.z);
+	// ray.origin = transform_rotate(ray.origin, 20, 10, 0);
+	// ray.direction = transform_rotate(ray.direction, 20, 10, 0);
+	//ray.direction = transform_translate(ray.direction, -cylinder->pos.x, -cylinder->pos.y, -cylinder->pos.z);
+	//temp_pos = make_vector(0, 0, 0);
+	temp_pos = cylinder->pos;
+	ray.direction = normalize_vector(ray.direction);
+	a = (ray.direction.x * ray.direction.x) + (ray.direction.z * ray.direction.z);
+	b = ray.direction.x * (ray.origin.x - temp_pos.x) + ray.direction.z * (ray.origin.z - temp_pos.z);
+	c = pow(ray.origin.x - temp_pos.x, 2) + pow(ray.origin.z - temp_pos.z, 2) - pow(cylinder->diameter / 2, 2);
+	delta = b * b - a * c;
+	if (delta > 0)
+	{
+		hr->t = -b - sqrt(delta) / (a);
+		if (hr->t <= 0)
+			hr->t = -b + sqrt(delta) / (a);
+		if (fabs(add_vec(ray.origin, multiply_vector(ray.direction, hr->t)).y - temp_pos.y) > cylinder->height / 2)
+			return (0);
+		hr->inter_point = add_vec(ray.origin, multiply_vector(ray.direction, hr->t));
+		hr->normal = cylinder_normal(cylinder, hr->inter_point);
+		hr->color_at_hit = cylinder->color;
+		return (1);
+	}
+	return (0);
 }
 
 t_vector3d	cylinder_normal(t_cylinder *cylinder, t_vector3d vec)
 {
-	return (divide_vector(subtract_vec(vec, cylinder->pos), cylinder->diameter / 2));
+	t_vector3d	normal;
+
+	normal = make_vector(vec.x - cylinder->pos.x, vec.y - vec.y, vec.z - cylinder->pos.z);
+	normal = transform_t_rotate(normal, cylinder->rot);
+	normal = normalize_vector(normal);
+	return (normal);
 }

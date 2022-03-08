@@ -39,6 +39,7 @@ SRC_NAME				=		main.c \
 								parse_plane.c \
 								parse_sphere.c \
 								tracing.c \
+								intersection_checks.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
@@ -46,9 +47,12 @@ SRC_NAME				=		main.c \
 								keyboard.c \
 								simple_vector_math.c \
 								advanced_vector_math.c \
+								quadratic_functions.c \
 								sphere_functions.c \
 								plane_functions.c \
 								cylinder_functions.c \
+								matrix_rotate.c \
+								matrix_translate.c \
 								free.c \
 								free2.c
 
