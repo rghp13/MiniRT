@@ -187,12 +187,13 @@ int			key_hook(int key, t_minirt *scene);
 /*
 **Free Functions (functions that are related to freeing malloced memory)
 */
-void		exit_cleanly(t_minirt *scene, int status);
-void		light_free(t_light *light);
-void		sphere_free(t_sphere *sphere);
-void		plane_free(t_plane *plane);
-void		cylinder_free(t_cylinder *cylinder);
-void		cone_free(t_cone *cone);
+void	exit_cleanly(t_minirt *scene, int status);
+void	light_free(t_light *light);
+void	sphere_free(t_sphere *sphere);
+void	plane_free(t_plane *plane);
+void	cylinder_free(t_cylinder *cylinder);
+void	cone_free(t_cone *cone);
+int		mouse_hook(t_minirt *scene);
 /*
 **Parse.c
 */
