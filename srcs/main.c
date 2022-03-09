@@ -71,6 +71,7 @@ int	main(int argc, char **argv)
 	printf("done\n");
 	mlx_put_image_to_window(scene.mlxref.mlx, scene.mlxref.win, scene.mlxref.imgref.img, 0, 0);//display image
 	mlx_key_hook(scene.mlxref.win, key_hook, &scene);//assign key to exit
+	mlx_hook(scene.mlxref.win, 17, 1L << 2, mouse_hook, &scene);
 	mlx_loop(scene.mlxref.mlx);//loop
 	//free
 	//exit
