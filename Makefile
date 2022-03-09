@@ -22,6 +22,7 @@ CYAN = \033[36m
 PATH_SRC				=		./srcs
 PATH_HEAD				=		./includes
 PATH_LIB				=		./libft
+
 SRC_NAME				=		main.c \
 								parse.c \
 								parse_utils.c \
@@ -38,6 +39,7 @@ SRC_NAME				=		main.c \
 								parse_plane.c \
 								parse_sphere.c \
 								tracing.c \
+								intersection_checks.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
@@ -45,7 +47,12 @@ SRC_NAME				=		main.c \
 								keyboard.c \
 								simple_vector_math.c \
 								advanced_vector_math.c \
+								quadratic_functions.c \
 								sphere_functions.c \
+								plane_functions.c \
+								cylinder_functions.c \
+								matrix_rotate.c \
+								matrix_translate.c \
 								free.c \
 								free2.c
 

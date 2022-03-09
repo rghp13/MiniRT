@@ -4,7 +4,9 @@ int	parse(char **argv, t_minirt *scene)
 {
 	int		fd;
 	char	*hold;
+	int		i;
 
+	i = 0;
 	if (prepare_file(argv, &fd, scene))
 		return (1);
 	while (1)
@@ -13,18 +15,21 @@ int	parse(char **argv, t_minirt *scene)
 		if (!hold)
 			break ;
 		remove_nl(hold);
-		if (check_valid_content(hold))
-		{
-			close(fd);
-			return (print_error(ER6, 1));
-		}
+		// if (check_valid_content(hold))
+		// {
+		// 	printf("ERROR HAPPENED AFTER THE %dth line\n", i);
+		// 	close(fd);
+		// 	return (print_error(ER6, 1));
+		// }
 		if (scan_text(hold, scene, 0))
 		{
 			free(hold);
 			close(fd);
+			printf("ERROR HAPPENED AFTER THE %dth line\n", i);
 			return (1);
 		}
 		free(hold);
+		i++;
 	}
 	return (close(fd));
 }
