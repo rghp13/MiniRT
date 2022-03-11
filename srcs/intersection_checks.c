@@ -15,8 +15,6 @@ int	find_closest_sphere(t_minirt *scene, t_ray ray, t_hit_result *closest)
 		{
 			if (hit.t < closest->t)
 			{
-				hit.obj_to_cam = subtract_vec(scene->light->pos, hit.inter_point);
-				hit.normal_cam_dot = dot_vector(normalize_vector(hit.obj_to_cam), normalize_vector(hit.normal));
 				*closest = hit;
 				found = 1;
 			}
@@ -41,8 +39,6 @@ int	find_closest_plane(t_minirt *scene, t_ray ray, t_hit_result *closest)
 		{
 			if (hit.t < closest->t)
 			{
-				hit.obj_to_cam = subtract_vec(scene->light->pos, hit.inter_point);
-				hit.normal_cam_dot = dot_vector(normalize_vector(hit.obj_to_cam), normalize_vector(hit.normal));
 				*closest = hit;
 				found = 1;
 			}
@@ -67,8 +63,6 @@ int	find_closest_cylinder(t_minirt *scene, t_ray ray, t_hit_result *closest)
 		{
 			if (hit.t < closest->t)
 			{
-				hit.obj_to_cam = subtract_vec(scene->light->pos, hit.inter_point);
-				hit.normal_cam_dot = dot_vector(normalize_vector(hit.obj_to_cam), normalize_vector(hit.normal));
 				*closest = hit;
 				found = 1;
 			}
