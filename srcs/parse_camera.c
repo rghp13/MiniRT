@@ -24,6 +24,7 @@ int	camera_parse(char **split, t_minirt *scene)
 		free(camera);
 		return (print_error("ERROR : CAMERA PARSING", 1));
 	}
+	camera->rot = normalize_vector(camera->rot);
 	scene->camera = camera;
 	return (0);
 }

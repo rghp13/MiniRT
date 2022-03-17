@@ -18,10 +18,7 @@ int	light_parse(char **split, t_minirt *scene)
 	if (parse_color(split[3], &light->color))
 		i = 1;
 	if (i || light->lum > 1.0 || light->lum < 0.0)
-	{
-		free(light);
-		return (1);
-	}
+		return (void_free(light, 1));
 	if (scene->light == NULL)
 		scene->light = light;
 	else
@@ -31,7 +28,7 @@ int	light_parse(char **split, t_minirt *scene)
 
 void	light_add_last(t_minirt *scene, t_light *light)
 {
-	t_light *hold;
+	t_light	*hold;
 
 	hold = scene->light;
 	while (hold->next)

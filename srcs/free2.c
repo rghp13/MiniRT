@@ -19,3 +19,10 @@ int	mouse_hook(t_minirt *scene)
 	exit_cleanly(scene, 0);
 	return (0);
 }
+
+int	void_free(void *free_me, int ret)
+{
+	if (free_me)
+		free(free_me);
+	return (ret);
+}

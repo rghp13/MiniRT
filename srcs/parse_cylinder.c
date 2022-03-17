@@ -20,10 +20,8 @@ int	cylinder_parse(char **spl, t_minirt *scene)
 	if (parse_color(spl[5], &cyl->color))
 		i = 1;
 	if (i || rot_range(&cyl->rot))
-	{
-		free(cyl);
-		return (1);
-	}
+		return (void_free(cyl, 1));
+	cyl->rot = normalize_vector(cyl->rot);
 	if (scene->cylinder)
 		cylinder_add_last(scene, cyl);
 	else
@@ -33,7 +31,7 @@ int	cylinder_parse(char **spl, t_minirt *scene)
 
 void	cylinder_add_last(t_minirt *scene, t_cylinder *cyl)
 {
-	t_cylinder *hold;
+	t_cylinder	*hold;
 
 	hold = scene->cylinder;
 	while (hold->next)
