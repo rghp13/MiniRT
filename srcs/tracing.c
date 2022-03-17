@@ -18,13 +18,10 @@ int	basic_tracer(t_minirt *scene)
 	t_pixel			pixel;
 	t_ray			ray;
 	t_hit_result	hit;
-	double			closest;
-	t_sphere		*current;
 
 	pixel.x = 0;
 	pixel.y = 0;
 	hit.t = 0;
-	pixel.color = make_color(0, 0, 0);
 	while (pixel.y < YSIZE)
 	{
 		pixel.x = 0;
@@ -34,7 +31,8 @@ int	basic_tracer(t_minirt *scene)
 			pixel.color = make_color(80, 80, 80);
 			if (find_closest_intersection(scene, ray, &hit))
 			{
-				pixel.color = vector_to_color(multiply_vector(add_vec(color_to_vector(hit.color_at_hit), multiply_vector(color_to_vector(scene->light->color), hit.normal_cam_dot)), scene->light->lum));
+				pixel.color = calculate_illumination(scene, &hit);
+				//pixel.color = hit.color_at_hit;
 			}
 			mlx_draw_pixel(&scene->mlxref.imgref, pixel);
 			pixel.x++;

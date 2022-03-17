@@ -162,8 +162,14 @@ t_vector3d	x_axis_rotation(t_vector3d vec, double theta);
 t_vector3d	y_axis_rotation(t_vector3d vec, double theta);
 t_vector3d	z_axis_rotation(t_vector3d vec, double theta);
 t_vector3d	transform_t_rotate(t_vector3d vec, t_vector3d rotation);
-t_vector3d	transform_rotate(t_vector3d vec, double r_x, double r_y, double r_z);
-
+t_vector3d	transform_inverse_rotate(t_vector3d vec, t_vector3d rotation);
+t_vector3d	transform_t_scale(t_vector3d point, t_vector3d scale);
+t_vector3d	transform_scale(t_vector3d point, double s_x, double s_y, double s_z);
+t_vector3d	transform_uniform_scale(t_vector3d point, double s);
+t_vector3d	get_all_axis_rotation(t_vector3d rotation);
+double		get_z_axis_rot(t_vector3d rotation);
+double		get_y_axis_rot(t_vector3d rotation);
+double		get_x_axis_rot(t_vector3d rotation);
 /*
 **Draw Functions (functions that change parts of the image)
 */
@@ -287,6 +293,11 @@ t_color		make_color(int r, int g, int b);
 int			int_color(t_color color);
 t_vector3d	color_to_vector(t_color color);
 t_color		vector_to_color(t_vector3d vector);
+
+/*
+Lighting Functions (functions that deal with illumination calculation)
+*/
+t_color		calculate_illumination(t_minirt *scene, t_hit_result *hit);
 
 /*
 Tracing Functions (functions that deal with the raytracing logic)
