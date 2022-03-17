@@ -18,10 +18,8 @@ int	plane_parse(char **split, t_minirt *scene)
 	if (parse_color(split[3], &plane->color))
 		i = 1;
 	if (i || rot_range(&plane->rot))
-	{
-		free(plane);
-		return (1);
-	}
+		return (void_free(plane, 1));
+	plane->rot = normalize_vector(plane->rot);
 	if (scene->plane)
 		plane_add_last(scene, plane);
 	else
@@ -31,7 +29,7 @@ int	plane_parse(char **split, t_minirt *scene)
 
 void	plane_add_last(t_minirt *scene, t_plane *plane)
 {
-	t_plane *hold;
+	t_plane	*hold;
 
 	hold = scene->plane;
 	while (hold->next)

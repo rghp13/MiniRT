@@ -200,6 +200,7 @@ void		plane_free(t_plane *plane);
 void		cylinder_free(t_cylinder *cylinder);
 void		cone_free(t_cone *cone);
 int			mouse_hook(t_minirt *scene);
+int			void_free(void *free_me, int ret);
 /*
 **Parse.c
 */
