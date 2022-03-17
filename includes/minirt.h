@@ -162,11 +162,14 @@ t_vector3d	x_axis_rotation(t_vector3d vec, double theta);
 t_vector3d	y_axis_rotation(t_vector3d vec, double theta);
 t_vector3d	z_axis_rotation(t_vector3d vec, double theta);
 t_vector3d	transform_t_rotate(t_vector3d vec, t_vector3d rotation);
-t_vector3d	transform_rotate(t_vector3d vec, double r_x, double r_y, double r_z);
+t_vector3d	transform_inverse_rotate(t_vector3d vec, t_vector3d rotation);
 t_vector3d	transform_t_scale(t_vector3d point, t_vector3d scale);
 t_vector3d	transform_scale(t_vector3d point, double s_x, double s_y, double s_z);
 t_vector3d	transform_uniform_scale(t_vector3d point, double s);
-
+t_vector3d	get_all_axis_rotation(t_vector3d rotation);
+double		get_z_axis_rot(t_vector3d rotation);
+double		get_y_axis_rot(t_vector3d rotation);
+double		get_x_axis_rot(t_vector3d rotation);
 /*
 **Draw Functions (functions that change parts of the image)
 */
@@ -190,13 +193,13 @@ int			key_hook(int key, t_minirt *scene);
 /*
 **Free Functions (functions that are related to freeing malloced memory)
 */
-void	exit_cleanly(t_minirt *scene, int status);
-void	light_free(t_light *light);
-void	sphere_free(t_sphere *sphere);
-void	plane_free(t_plane *plane);
-void	cylinder_free(t_cylinder *cylinder);
-void	cone_free(t_cone *cone);
-int		mouse_hook(t_minirt *scene);
+void		exit_cleanly(t_minirt *scene, int status);
+void		light_free(t_light *light);
+void		sphere_free(t_sphere *sphere);
+void		plane_free(t_plane *plane);
+void		cylinder_free(t_cylinder *cylinder);
+void		cone_free(t_cone *cone);
+int			mouse_hook(t_minirt *scene);
 /*
 **Parse.c
 */

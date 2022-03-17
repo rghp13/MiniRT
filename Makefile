@@ -44,6 +44,7 @@ SRC_NAME				=		main.c \
 								draw_functions.c \
 								position_functions.c \
 								rotation_functions.c \
+								normalized_vector_roation.c \
 								color_functions.c \
 								keyboard.c \
 								simple_vector_math.c \
