@@ -18,10 +18,8 @@ int	cone_parse(char **spl, t_minirt *scene)
 	if (parse_color(spl[4], &cone->color))
 		i = 1;
 	if (i || rot_range(&cone->rot))
-	{
-		free(cone);
-		return (1);
-	}
+		return (void_free(cone, 1));
+	cone->rot = normalize_vector(cone->rot);
 	if (scene->cone)
 		cone_add_last(scene, cone);
 	else

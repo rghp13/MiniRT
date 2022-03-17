@@ -1,6 +1,6 @@
 #include "minirt.h"
 
-int parse_vector(const char *str, t_vector3d *vector)
+int	parse_vector(const char *str, t_vector3d *vector)
 {
 	char	**hold;
 	int		i;

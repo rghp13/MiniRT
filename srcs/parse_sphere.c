@@ -18,10 +18,7 @@ int	sphere_parse(char **split, t_minirt *scene)
 	if (parse_color(split[3], &sphere->color))
 		i = 1;
 	if (i)
-	{
-		free(sphere);
-		return (1);
-	}
+		return (void_free(sphere, 1));
 	if (scene->sphere)
 		sphere_add_last(scene, sphere);
 	else
@@ -31,7 +28,7 @@ int	sphere_parse(char **split, t_minirt *scene)
 
 void	sphere_add_last(t_minirt *scene, t_sphere *sphere)
 {
-	t_sphere *hold;
+	t_sphere	*hold;
 
 	hold = scene->sphere;
 	while (hold->next)
