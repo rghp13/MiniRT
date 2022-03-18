@@ -30,10 +30,7 @@ int	basic_tracer(t_minirt *scene)
 			ray = generate_ray(scene, pixel);
 			pixel.color = make_color(80, 80, 80);
 			if (find_closest_intersection(scene, ray, &hit))
-			{
 				pixel.color = calculate_illumination(scene, &hit);
-				//pixel.color = hit.color_at_hit;
-			}
 			mlx_draw_pixel(&scene->mlxref.imgref, pixel);
 			pixel.x++;
 		}
