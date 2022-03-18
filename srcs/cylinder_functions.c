@@ -99,7 +99,7 @@ int	cylinder_intersect(t_cylinder *cylinder, t_ray ray, t_hit_result *hr)
 			*hr = hit_bottom;
 		return (1);
 	}
-	if (top && hit_top.t < hit_bottom.t)
+	if (top && (hit_top.t < hit_bottom.t || !bottom))
 		*hr = hit_top;
 	else if (bottom)
 		*hr = hit_bottom;
