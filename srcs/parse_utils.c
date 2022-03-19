@@ -14,14 +14,14 @@ int	check_valid_file(const char *filename)
 		return (1);
 	len = ft_strlen(filename);
 	if (filename[len - 1] == 't' && filename[len - 2] == 'r' && \
-	filename[len -3] == '.')
+	filename[len - 3] == '.')
 		return (0);
 	return (1);
 }
-//if not empty return 1
+
 int	empty_line(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -32,7 +32,8 @@ int	empty_line(const char *str)
 	}
 	return (0);
 }
-//verifies that only valid chars are in the text file
+
+//probably getting rid of this function
 int	check_valid_content(const char *str)
 {
 	int	i;

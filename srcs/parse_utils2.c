@@ -12,6 +12,7 @@ int	split_count(char **split)
 	return (i);
 }
 //looks for positive numbers and 2 commas
+
 int	valid_color_check(char **split)
 {
 	int	i;
@@ -78,8 +79,8 @@ int	parse_positive_double(char *str, double *num)
 
 int	parse_color(char *str, t_color *color)
 {
-	int	i;
-	char **split;
+	int		i;
+	char	**split;
 
 	i = 0;
 	split = ft_split(str, ',');

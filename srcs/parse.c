@@ -25,7 +25,6 @@ int	parse(char **argv, t_minirt *scene)
 		{
 			free(hold);
 			close(fd);
-			printf("ERROR HAPPENED AFTER THE %dth line\n", i);
 			return (1);
 		}
 		free(hold);
@@ -68,8 +67,8 @@ int	scan_text(const char *str, t_minirt *scene, int ret)
 */
 int	prepare_file(char **argv, int *fd, t_minirt *scene)
 {
-	char *str;
-	int i;
+	char	*str;
+	int		i;
 
 	if (check_valid_file(argv[1]))
 		return (print_error(ER2, 1));

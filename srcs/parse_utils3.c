@@ -55,7 +55,7 @@ int	rot_range(t_vector3d *rotation)
 	else if (rotation->z > 1.0 || rotation->z < -1.0)
 		return (1);
 	else if (rotation->x == 0.0 && rotation->y == 0.0 && rotation->z == 0.0)
-		return (print_error("ERROR : ROTATION == 0.0", 1));
+		return (print_error(ER10, 1));
 	else
 		return (0);
 }
