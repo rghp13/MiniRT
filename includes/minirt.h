@@ -176,6 +176,12 @@ double		get_x_axis_rot(t_vector3d rotation);
 void		mlx_draw_pixel(t_img *img, t_pixel pixel);
 
 /*
+**Local/World Functions (functions that translate local and world space)
+*/
+t_ray			world_to_local(t_ray ray, t_vector3d pos, t_vector3d rot);
+t_hit_result	local_to_world(t_hit_result hr, t_vector3d pos, t_vector3d rot)
+
+/*
 **Position Functions (functions that run on a position struct)
 */
 int			reset_position(t_vector3d *pos);

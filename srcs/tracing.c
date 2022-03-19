@@ -8,8 +8,10 @@ t_ray	generate_ray(t_minirt *scene, t_pixel pixel)
 
 	ray.origin = scene->camera->pos;
 	focal_length = (XSIZE / 2) / tan((scene->camera->fov / 2) * (M_PI / 180));
-	pixeloffset = make_vector(pixel.x - (XSIZE / 2), pixel.y - (YSIZE / 2), focal_length);
-	ray.direction = normalize_vector(add_vec(multiply_vector(scene->camera->rot, focal_length), pixeloffset));
+	pixeloffset = make_vector(pixel.x - \
+	(XSIZE / 2), pixel.y - (YSIZE / 2), focal_length);
+	ray.direction = normalize_vector(add_vec(\
+	multiply_vector(scene->camera->rot, focal_length), pixeloffset));
 	return (ray);
 }
 

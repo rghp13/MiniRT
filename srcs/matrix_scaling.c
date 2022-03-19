@@ -8,7 +8,8 @@ t_vector3d	transform_t_scale(t_vector3d point, t_vector3d scale)
 	return (point);
 }
 
-t_vector3d	transform_scale(t_vector3d point, double s_x, double s_y, double s_z)
+t_vector3d	transform_scale(t_vector3d point, \
+double s_x, double s_y, double s_z)
 {
 	point.x = point.x * s_x;
 	point.y = point.y * s_y;

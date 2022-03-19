@@ -28,7 +28,7 @@ int	find_closest_plane(t_minirt *scene, t_ray ray, t_hit_result *closest)
 {
 	int				found;
 	t_hit_result	hit;
-	t_plane		*current;
+	t_plane			*current;
 
 	found = 0;
 	current = scene->plane;
@@ -72,7 +72,8 @@ int	find_closest_cylinder(t_minirt *scene, t_ray ray, t_hit_result *closest)
 	return (found);
 }
 
-int	find_closest_intersection(t_minirt *scene, t_ray ray, t_hit_result *closest_hit)
+int	find_closest_intersection(t_minirt *scene, \
+t_ray ray, t_hit_result *closest_hit)
 {
 	t_hit_result	closest_sphere;
 	t_hit_result	closest_plane;
@@ -84,7 +85,8 @@ int	find_closest_intersection(t_minirt *scene, t_ray ray, t_hit_result *closest_
 		closest_plane.t = __DBL_MAX__;
 	if (!find_closest_cylinder(scene, ray, &closest_cylinder))
 		closest_cylinder.t = __DBL_MAX__;
-	if (closest_sphere.t < closest_cylinder.t && closest_sphere.t < closest_plane.t && closest_sphere.t > 0)
+	if (closest_sphere.t < closest_cylinder.t && closest_sphere.t \
+	< closest_plane.t && closest_sphere.t > 0)
 		*closest_hit = closest_sphere;
 	else if (closest_cylinder.t < closest_plane.t && closest_cylinder.t > 0)
 		*closest_hit = closest_cylinder;

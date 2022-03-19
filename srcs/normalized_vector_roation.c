@@ -5,7 +5,8 @@ double	get_x_axis_rot(t_vector3d rotation)
 	double	rot;
 	double	hypotenuse;
 
-	hypotenuse = sqrt(pow(rotation.x, 2) + pow(rotation.y, 2) + pow(rotation.z, 2));
+	hypotenuse = sqrt(pow(rotation.x, 2) + \
+	pow(rotation.y, 2) + pow(rotation.z, 2));
 	rot = acos(rotation.x / hypotenuse);
 	return (rot);
 }
@@ -15,7 +16,8 @@ double	get_y_axis_rot(t_vector3d rotation)
 	double	rot;
 	double	hypotenuse;
 
-	hypotenuse = sqrt(pow(rotation.x, 2) + pow(rotation.y, 2) + pow(rotation.z, 2));
+	hypotenuse = sqrt(pow(rotation.x, 2) + \
+	pow(rotation.y, 2) + pow(rotation.z, 2));
 	rot = acos(rotation.y / hypotenuse);
 	return (rot);
 }
@@ -25,7 +27,8 @@ double	get_z_axis_rot(t_vector3d rotation)
 	double	rot;
 	double	hypotenuse;
 
-	hypotenuse = sqrt(pow(rotation.x, 2) + pow(rotation.y, 2) + pow(rotation.z, 2));
+	hypotenuse = sqrt(pow(rotation.x, 2) + \
+	pow(rotation.y, 2) + pow(rotation.z, 2));
 	rot = acos(rotation.z / hypotenuse);
 	return (rot);
 }
