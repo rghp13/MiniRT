@@ -33,28 +33,29 @@ int	empty_line(const char *str)
 	return (0);
 }
 
-//probably getting rid of this function
-int	check_valid_content(const char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-	{
-		if (approved_char(str[i]))
-			continue ;
-		if (str[i] == '-' || str[i] == ',' || str[i] == '.' || str[i] == ' ' || \
-		str[i] == '\t' || str[i] == '\n' || ft_isdigit(str[i]))
-			continue ;
-		return (1);
-	}
-	return (0);
-}
-
-int	approved_char(const char str)
-{
-	if (str == 'A' || str == 'C' || str == 'L' || str == 's' || str == 'p' || \
-	str == 'l' || str == 'c' || str == 'y')
-		return (1);
-	return (0);
-}
+/*probably getting rid of this function
+**int	check_valid_content(const char *str)
+**{
+**	int	i;
+**
+**	i = -1;
+**	while (str[++i])
+**	{
+**		if (approved_char(str[i]))
+**			continue ;
+**		if (str[i] == '-' || str[i] == ',' || str[i] == '.' || str[i] == ' ' || \
+**		str[i] == '\t' || str[i] == '\n' || ft_isdigit(str[i]))
+**			continue ;
+**		return (1);
+**	}
+**	return (0);
+**}
+**
+**int	approved_char(const char str)
+**{
+**	if (str == 'A' || str == 'C' || str == 'L' || str == 's' || str == 'p' || \
+**	str == 'l' || str == 'c' || str == 'y')
+**		return (1);
+**	return (0);
+**}
+*/

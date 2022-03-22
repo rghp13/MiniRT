@@ -217,8 +217,6 @@ int			scan_text(const char *str, t_minirt *scene, int ret);
 int			print_error(const char *str, int ret);
 int			check_valid_file(const char *filename);
 int			empty_line(const char *str);
-int			check_valid_content(const char *str);
-int			approved_char(const char str);
 /*
 **parse_utils2.c
 */

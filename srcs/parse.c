@@ -15,12 +15,6 @@ int	parse(char **argv, t_minirt *scene)
 		if (!hold)
 			break ;
 		remove_nl(hold);
-		// if (check_valid_content(hold))
-		// {
-		// 	printf("ERROR HAPPENED AFTER THE %dth line\n", i);
-		// 	close(fd);
-		// 	return (print_error(ER6, 1));
-		// }
 		if (scan_text(hold, scene, 0))
 		{
 			free(hold);
@@ -54,8 +48,6 @@ int	scan_text(const char *str, t_minirt *scene, int ret)
 		ret |= plane_parse(split, scene);
 	else if (ft_stringcomp(split[0], "cy") == 0)
 		ret |= cylinder_parse(split, scene);
-	else if (ft_stringcomp(split[0], "co") == 0)
-		ret |= cone_parse(split, scene);
 	else
 		ret |= print_error(ER4, 1);
 	ft_free_all_split(split);
