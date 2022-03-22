@@ -43,7 +43,7 @@ t_vector3d	color_to_vector(t_color color)
 	return (ret_vec);
 }
 
-t_color vector_to_color(t_vector3d vector)
+t_color	vector_to_color(t_vector3d vector)
 {
 	t_color	color;
 
