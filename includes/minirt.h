@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:34:22 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:38:32 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/22 17:23:25 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ For the math to works, XSIZE has to be bigger than YSIZE
 # define ER8 "ERROR : CAMERA ALREADY INIT "
 # define ER9 "ERROR : CAMERA PARSING "
 # define ER10 "ERROR : ROTATION == 0.0 "
+# define ER11 "ERROR : MLX FAILED TO INIT "
 
 typedef struct s_img {
 	void	*img;
