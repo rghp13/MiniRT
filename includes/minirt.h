@@ -25,6 +25,10 @@ For the math to works, XSIZE has to be bigger than YSIZE
 # define ER4 "ERROR : PARSING ERROR DETECTED "
 # define ER5 "ERROR : MISSING KEY COMPONENT "
 # define ER6 "ERROR : ILLEGAL CHARS DETECTED "
+# define ER7 "ERROR : AMBIENT LIGHTING ALREADY INIT "
+# define ER8 "ERROR : CAMERA ALREADY INIT "
+# define ER9 "ERROR : CAMERA PARSING "
+# define ER10 "ERROR : ROTATION == 0.0 "
 
 typedef struct s_img {
 	void	*img;
@@ -219,8 +223,6 @@ int			scan_text(const char *str, t_minirt *scene, int ret);
 int			print_error(const char *str, int ret);
 int			check_valid_file(const char *filename);
 int			empty_line(const char *str);
-int			check_valid_content(const char *str);
-int			approved_char(const char str);
 /*
 **parse_utils2.c
 */

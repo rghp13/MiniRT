@@ -7,7 +7,7 @@ int	ambient_parse(char **split, t_minirt *scene)
 
 	i = 0;
 	if (scene->ambient)
-		return (printf("ERROR : Ambient lighting already initialized\n"));
+		return (print_error(ER7, 1));
 	if (!split[0] || !split[1] || !split[2] || split[3])
 		return (1);
 	light = ft_calloc(1, sizeof(t_alight));

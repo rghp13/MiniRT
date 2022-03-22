@@ -7,7 +7,7 @@ int	camera_parse(char **split, t_minirt *scene)
 
 	i = 0;
 	if (scene->camera)
-		return (print_error("ERROR : Camera already initialized\n", 1));
+		return (print_error(ER8, 1));
 	if (!split[0] || !split[1] || !split[2] || !split[3] || split[4])
 		return (1);
 	camera = ft_calloc(1, sizeof(t_camera));
@@ -22,7 +22,7 @@ int	camera_parse(char **split, t_minirt *scene)
 	if (i || rot_range(&camera->rot) || fov_range(camera->fov))
 	{
 		free(camera);
-		return (print_error("ERROR : CAMERA PARSING", 1));
+		return (print_error(ER9, 1));
 	}
 	camera->rot = normalize_vector(camera->rot);
 	scene->camera = camera;
