@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:44:29 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:44:30 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:30:43 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void	exit_cleanly(t_minirt *scene, int status)
 	sphere_free(scene->sphere);
 	plane_free(scene->plane);
 	cylinder_free(scene->cylinder);
-	cone_free(scene->cone);
+	if (scene->mlxref.mlx)
+	{
+		mlx_destroy_window(scene->mlxref.mlx, scene->mlxref.win);
+		mlx_destroy_image(scene->mlxref.mlx, scene->mlxref.imgref.img);
+		mlx_destroy_display(scene->mlxref.mlx);
+		free(scene->mlxref.mlx);
+	}
 	exit(status);
 }
 
