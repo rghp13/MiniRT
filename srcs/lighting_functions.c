@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dscriabi <dscriabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:46:54 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:46:55 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/22 17:10:18 by dscriabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_color	calculate_illumination(t_minirt *scene, t_hit_result *hit)
 	inter_cam_norm = normalize_vector(subtract_vec(scene->light->pos, \
 	hit->inter_point));
 	angle = acos(dot_vector(hit->normal, inter_cam_norm));
-	if (angle > 1.5708 || check_shadow(scene, *hit))
+	if (angle > 1.5708) //|| check_shadow(scene, *hit))
 		return (light_plus_ambiant(hit->color_at_hit, 0, *scene->ambient));
 	else
 	{
