@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 16:43:42 by rponsonn          #+#    #+#             */
+/*   Updated: 2022/03/22 16:43:45 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minirt.h"
 
-t_color clamp_color(t_color color)
+t_color	clamp_color(t_color color)
 {
 	if (color.r > 255)
 		color.r = 255;

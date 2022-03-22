@@ -56,6 +56,7 @@ SRC_NAME				=		main.c \
 								matrix_rotate.c \
 								matrix_translate.c \
 								matrix_scaling.c \
+								world_local.c \
 								free.c \
 								free2.c
 
@@ -63,7 +64,7 @@ NAME					=		minirt
 OBJ_NAME				=		$(SRC_NAME:.c=.o)
 CC						=		clang
 RM						=		rm -f
-CFLAG					=		-g #-Wall -Wextra -Werror
+CFLAG					=		-Wall -Wextra -Werror
 SRC						=		$(addprefix $(PATH_SRC)/,$(SRC_NAME))
 OBJ						=		$(addprefix $(PATH_SRC)/,$(OBJ_NAME))
 LIBFT_A					=		libft.a

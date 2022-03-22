@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_utils2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 16:52:18 by rponsonn          #+#    #+#             */
+/*   Updated: 2022/03/22 16:54:35 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
 int	split_count(char **split)
@@ -11,7 +23,6 @@ int	split_count(char **split)
 		i++;
 	return (i);
 }
-//looks for positive numbers and 2 commas
 
 int	valid_color_check(char **split)
 {

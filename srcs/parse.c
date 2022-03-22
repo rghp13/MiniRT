@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 16:56:15 by rponsonn          #+#    #+#             */
+/*   Updated: 2022/03/22 16:56:16 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minirt.h"
 
 int	parse(char **argv, t_minirt *scene)
@@ -59,9 +71,7 @@ int	scan_text(const char *str, t_minirt *scene, int ret)
 */
 int	prepare_file(char **argv, int *fd, t_minirt *scene)
 {
-	char	*str;
-	int		i;
-
+	(void)scene;
 	if (check_valid_file(argv[1]))
 		return (print_error(ER2, 1));
 	*fd = open(argv[1], O_RDONLY);

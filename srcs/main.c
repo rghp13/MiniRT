@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 16:38:54 by rponsonn          #+#    #+#             */
+/*   Updated: 2022/03/22 16:39:07 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minirt.h"
 
 int	init_mlx_win_img(t_mlx_base *mlxref)
@@ -35,7 +47,6 @@ int	main(int argc, char **argv)
 	scene = init_scene_struct();
 	if (parse(argv, &scene) || !scene.ambient || !scene.camera || !scene.light)
 		exit_cleanly(&scene, 1);
-	print_parse(&scene);
 	basic_tracer(&scene);
 	mlx_put_image_to_window(scene.mlxref.mlx, scene.mlxref.win, \
 	scene.mlxref.imgref.img, 0, 0);

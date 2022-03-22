@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lighting_functions.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 16:46:54 by rponsonn          #+#    #+#             */
+/*   Updated: 2022/03/22 16:46:55 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minirt.h"
 
 int	check_shadow(t_minirt *scene, t_hit_result hit)
@@ -32,7 +44,6 @@ t_color	light_plus_ambiant(t_color color, double intensity, t_alight ambiant)
 
 t_color	calculate_illumination(t_minirt *scene, t_hit_result *hit)
 {
-	t_ray		ray;
 	t_vector3d	inter_cam_norm;
 	double		angle;
 	double		intensity;

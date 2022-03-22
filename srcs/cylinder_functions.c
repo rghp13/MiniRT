@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cylinder_functions.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/22 16:43:53 by rponsonn          #+#    #+#             */
+/*   Updated: 2022/03/22 16:43:54 by rponsonn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/minirt.h"
 
 t_vector3d	cylinder_normal(t_cylinder *cylinder, t_vector3d vec)
 {
 	t_vector3d	normal;
 
+	(void)cylinder;
 	normal = make_vector(vec.x, 0, vec.z);
 	return (normalize_vector(normal));
 }
 
 t_vector3d	cap_normal(double side)
 {
-	t_vector3d	vec;
-
 	if (side > 0)
 		return (make_vector(0, 1, 0));
 	else
@@ -49,7 +60,6 @@ t_hit_result *hr, double side)
 int	body_intersect(t_cylinder *cylinder, t_ray ray, t_hit_result *hr)
 {
 	t_quadratic	qua;
-	double		r;
 
 	qua.a = pow(ray.direction.x, 2.0) + pow(ray.direction.z, 2.0);
 	qua.b = 2.0 * ((ray.direction.x * ray.origin.x) \
