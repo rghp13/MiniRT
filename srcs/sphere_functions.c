@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:56:54 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:56:55 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:35:11 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
