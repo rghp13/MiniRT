@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   advanced_vector_math.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:42:52 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:42:54 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:35:34 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ t_vector3d	cross_vector(t_vector3d v1, t_vector3d v2)
 double	dot_vector(t_vector3d v1, t_vector3d v2)
 {
 	return ((v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z));
+}
+
+double	vector_magnitude(t_vector3d vec)
+{
+	return (sqrt(pow(vec.x, 2) + pow(vec.y, 2) + pow(vec.z, 2)));
 }

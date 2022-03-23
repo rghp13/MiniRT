@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dscriabi <dscriabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:46:54 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 17:10:18 by dscriabi         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:53:35 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ int	check_shadow(t_minirt *scene, t_hit_result hit)
 	t_ray			ray;
 	t_hit_result	hit2;
 
-	ray.origin = add_vec(hit.inter_point, multiply_vector(hit.normal, 0.1));
+	ray.origin = add_vec(hit.inter_point, multiply_vector(hit.normal, 0.0001));
 	ray.direction = normalize_vector(subtract_vec(scene->light->pos, \
-	hit.inter_point));
+hit.inter_point));
 	if (find_closest_intersection(scene, ray, &hit2))
-		return (1);
+	{
+		if (hit2.t < vector_magnitude(\
+		subtract_vec(scene->light->pos, ray.origin)))
+			return (1);
+	}
 	return (0);
 }
 
@@ -51,7 +55,7 @@ t_color	calculate_illumination(t_minirt *scene, t_hit_result *hit)
 	inter_cam_norm = normalize_vector(subtract_vec(scene->light->pos, \
 	hit->inter_point));
 	angle = acos(dot_vector(hit->normal, inter_cam_norm));
-	if (angle > 1.5708) //|| check_shadow(scene, *hit))
+	if (angle > 1.5708 || check_shadow(scene, *hit))
 		return (light_plus_ambiant(hit->color_at_hit, 0, *scene->ambient));
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:43:53 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:43:54 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:47:30 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	body_intersect(t_cylinder *cylinder, t_ray ray, t_hit_result *hr)
 	+ (ray.direction.z * ray.origin.z));
 	qua.c = pow(ray.origin.x, 2.0) \
 	+ pow(ray.origin.z, 2.0) - pow(cylinder->diameter / 2, 2);
-	if (!solve_quadratic(&qua) && qua.t1 < 0 && qua.t2 < 0)
+	if (!solve_quadratic(&qua) || qua.t1 < 0 || qua.t2 < 0)
 		return (0);
 	if (qua.t1 < qua.t2 || (qua.t1 > 0 && qua.t2 < 0))
 		hr->t = qua.t1;

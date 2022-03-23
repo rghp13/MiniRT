@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:34:22 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:38:32 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:36:01 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -301,6 +301,7 @@ Advanced Vector Math (functions that allow for simple manipulations of vectors)
 t_vector3d		normalize_vector(t_vector3d v1);
 t_vector3d		cross_vector(t_vector3d v1, t_vector3d v2);
 double			dot_vector(t_vector3d v1, t_vector3d v2);
+double			vector_magnitude(t_vector3d vec);
 
 /*
 Quadratic Functions (functions that help solve quadratics)
