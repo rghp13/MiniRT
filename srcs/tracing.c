@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tracing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:57:01 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:57:02 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/23 16:51:08 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	basic_tracer(t_minirt *scene)
 		while (pixel.x < XSIZE)
 		{
 			ray = generate_ray(scene, pixel);
-			pixel.color = make_color(80, 80, 80);
+			pixel.color = make_color(0, 0, 0);
 			if (find_closest_intersection(scene, ray, &hit))
 				pixel.color = calculate_illumination(scene, &hit);
 			mlx_draw_pixel(&scene->mlxref.imgref, pixel);

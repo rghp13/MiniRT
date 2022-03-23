@@ -6,7 +6,7 @@
 /*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:56:21 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 18:35:03 by dimitriscr       ###   ########.fr       */
+/*   Updated: 2022/03/23 16:09:41 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	plane_intersect(t_plane *plane, t_ray ray, t_hit_result *hr)
 	double		disc;
 
 	disc = dot_vector(plane->rot, ray.direction);
-	if (disc < 0)
+	if (disc < 1e-6 && disc > -1e-6)
 		return (0);
 	oc = subtract_vec(plane->pos, ray.origin);
 	hr->t = dot_vector(oc, plane->rot) / disc;

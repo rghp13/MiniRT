@@ -6,7 +6,7 @@
 /*   By: dimitriscr <dimitriscr@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:46:54 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/23 15:53:35 by dimitriscr       ###   ########.fr       */
+/*   Updated: 2022/03/23 17:18:37 by dimitriscr       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_shadow(t_minirt *scene, t_hit_result hit)
 	t_ray			ray;
 	t_hit_result	hit2;
 
-	ray.origin = add_vec(hit.inter_point, multiply_vector(hit.normal, 0.0001));
+	ray.origin = add_vec(hit.inter_point, multiply_vector(hit.normal, 0.001));
 	ray.direction = normalize_vector(subtract_vec(scene->light->pos, \
 hit.inter_point));
 	if (find_closest_intersection(scene, ray, &hit2))
