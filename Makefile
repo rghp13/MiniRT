@@ -81,6 +81,7 @@ ${NAME}:						${OBJ}
 								@printf "${CYAN}[COMPILATION COMPLETE]${NC}\n"
 								@printf "${GREEN}$$HEADER${NC}\n"
 all:							${NAME}
+bonus:							all
 
 clean:
 								@${RM} ${OBJ}
@@ -92,4 +93,4 @@ fclean:							clean
 								@make --no-print-directory -C ${PATH_LIB} fclean
 								@printf "${GREEN}[ OK ]${NC}${RED} ${NAME} DELETED${NC}\n"
 re:								fclean ${NAME}
-.PHONY:							all clean fclean re
+.PHONY:							all clean fclean re bonus

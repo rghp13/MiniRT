@@ -6,7 +6,7 @@
 /*   By: rponsonn <rponsonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:44:38 by rponsonn          #+#    #+#             */
-/*   Updated: 2022/03/22 16:44:48 by rponsonn         ###   ########.fr       */
+/*   Updated: 2022/03/22 18:30:49 by rponsonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	cone_free(t_cone *cone)
 
 int	mouse_hook(t_minirt *scene)
 {
-	mlx_destroy_window(scene->mlxref.mlx, scene->mlxref.win);
-	free(scene->mlxref.mlx);
 	exit_cleanly(scene, 0);
 	return (0);
 }

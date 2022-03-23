@@ -41,6 +41,7 @@ For the math to works, XSIZE has to be bigger than YSIZE
 # define ER8 "ERROR : CAMERA ALREADY INIT "
 # define ER9 "ERROR : CAMERA PARSING "
 # define ER10 "ERROR : ROTATION == 0.0 "
+# define ER11 "ERROR : MLX FAILED TO INIT "
 
 typedef struct s_img {
 	void	*img;
